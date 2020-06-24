@@ -3,6 +3,11 @@ enum Status {
   OFF
 }
 
+enum ArticleCategory {
+    BookRecommendations
+    ParentalExperiences
+}
+
 type Article @model {
   id: ID!
   title: String!
@@ -10,7 +15,7 @@ type Article @model {
   link: String!
   status: Status!
   image: String
-  categories: String
+  categories: ArticleCategory
   priority: Int
   description: String
 }

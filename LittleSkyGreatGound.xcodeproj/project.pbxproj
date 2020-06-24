@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3CBB6AF340AC926BDDB2C3E5 /* Pods_LittleSkyGreatGound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BD74E0AEA8BB28B8CCB1CE /* Pods_LittleSkyGreatGound.framework */; };
+		41C502995E8B40E69E0C0DA5 /* ArticleCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 598C9AFF80B04BA180B74E0D /* ArticleCategory.swift */; };
 		60FA394D37984EE5818EDC36 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9879103AE734501A999F4C5 /* Status.swift */; };
 		67E01A23B8FC4A35B72C165A /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293F8185489C47F38A46D207 /* AmplifyModels.swift */; };
 		6E67FF31750E45338B1B004F /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = AA6A66F0B2984BF1A1E4BCE9 /* awsconfiguration.json */; };
@@ -21,6 +22,11 @@
 		86304C0E24A24AD900943D97 /* ArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86304C0D24A24AD900943D97 /* ArticleController.swift */; };
 		86304C1124A24B5000943D97 /* Articles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86304C1024A24B5000943D97 /* Articles.swift */; };
 		86304C1324A313AF00943D97 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86304C1224A313AF00943D97 /* ArticleTableViewCell.swift */; };
+		86304C1B24A3233600943D97 /* UIView+ConstraintLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86304C1824A3233500943D97 /* UIView+ConstraintLayout.swift */; };
+		86304C1C24A3233600943D97 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86304C1924A3233600943D97 /* HorizontalStackView.swift */; };
+		86304C1D24A3233600943D97 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86304C1A24A3233600943D97 /* VerticalStackView.swift */; };
+		86304C2124A32D5E00943D97 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86304C2024A32D5E00943D97 /* ArticleDetailViewController.swift */; };
+		86304C2324A32F2800943D97 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86304C2224A32F2800943D97 /* ColorTheme.swift */; };
 		E2171A02E07342AEAD071685 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3363D7ED774646945EB099 /* Article.swift */; };
 		EBA3FA4879E9460BAF5EB141 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = BE4F46FFDBA043778B22472B /* amplifyconfiguration.json */; };
 /* End PBXBuildFile section */
@@ -28,6 +34,7 @@
 /* Begin PBXFileReference section */
 		293F8185489C47F38A46D207 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
 		580D4051A7EA409AB3457FFE /* Article+Schema.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "Article+Schema.swift"; path = "amplify/generated/models/Article+Schema.swift"; sourceTree = "<group>"; };
+		598C9AFF80B04BA180B74E0D /* ArticleCategory.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = ArticleCategory.swift; path = amplify/generated/models/ArticleCategory.swift; sourceTree = "<group>"; };
 		59FFD2CF17F378713D57D3A0 /* Pods-LittleSkyGreatGound.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleSkyGreatGound.release.xcconfig"; path = "Target Support Files/Pods-LittleSkyGreatGound/Pods-LittleSkyGreatGound.release.xcconfig"; sourceTree = "<group>"; };
 		65BD74E0AEA8BB28B8CCB1CE /* Pods_LittleSkyGreatGound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LittleSkyGreatGound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86304BE924A2305800943D97 /* LittleSkyGreatGound.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LittleSkyGreatGound.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -41,6 +48,11 @@
 		86304C0D24A24AD900943D97 /* ArticleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleController.swift; sourceTree = "<group>"; };
 		86304C1024A24B5000943D97 /* Articles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Articles.swift; sourceTree = "<group>"; };
 		86304C1224A313AF00943D97 /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		86304C1824A3233500943D97 /* UIView+ConstraintLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+ConstraintLayout.swift"; sourceTree = "<group>"; };
+		86304C1924A3233600943D97 /* HorizontalStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
+		86304C1A24A3233600943D97 /* VerticalStackView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
+		86304C2024A32D5E00943D97 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
+		86304C2224A32F2800943D97 /* ColorTheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		9607A527C5B22024AF7101F7 /* Pods-LittleSkyGreatGound.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleSkyGreatGound.debug.xcconfig"; path = "Target Support Files/Pods-LittleSkyGreatGound/Pods-LittleSkyGreatGound.debug.xcconfig"; sourceTree = "<group>"; };
 		A9879103AE734501A999F4C5 /* Status.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = Status.swift; path = amplify/generated/models/Status.swift; sourceTree = "<group>"; };
 		AA6A66F0B2984BF1A1E4BCE9 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = awsconfiguration.json; sourceTree = "<group>"; };
@@ -107,6 +119,7 @@
 			children = (
 				86304C0724A2366400943D97 /* Article */,
 				86304C0224A234D100943D97 /* Controller */,
+				86304C1524A3222200943D97 /* Utils */,
 				86304C0124A234B900943D97 /* Support */,
 				86304BF724A2305A00943D97 /* LaunchScreen.storyboard */,
 				86304BFA24A2305A00943D97 /* Info.plist */,
@@ -153,8 +166,9 @@
 		86304C0F24A24B3800943D97 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				86304C0924A2380B00943D97 /* ArticleViewController.swift */,
 				86304C0D24A24AD900943D97 /* ArticleController.swift */,
+				86304C0924A2380B00943D97 /* ArticleViewController.swift */,
+				86304C2024A32D5E00943D97 /* ArticleDetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -165,6 +179,17 @@
 				86304C1224A313AF00943D97 /* ArticleTableViewCell.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		86304C1524A3222200943D97 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				86304C2224A32F2800943D97 /* ColorTheme.swift */,
+				86304C1924A3233600943D97 /* HorizontalStackView.swift */,
+				86304C1A24A3233600943D97 /* VerticalStackView.swift */,
+				86304C1824A3233500943D97 /* UIView+ConstraintLayout.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		9E1293734B6B7541EF059D4D /* Pods */ = {
@@ -183,6 +208,7 @@
 				FD3363D7ED774646945EB099 /* Article.swift */,
 				580D4051A7EA409AB3457FFE /* Article+Schema.swift */,
 				A9879103AE734501A999F4C5 /* Status.swift */,
+				598C9AFF80B04BA180B74E0D /* ArticleCategory.swift */,
 			);
 			name = AmplifyModels;
 			path = .;
@@ -327,13 +353,19 @@
 				86304C0A24A2380B00943D97 /* ArticleViewController.swift in Sources */,
 				86304BED24A2305800943D97 /* AppDelegate.swift in Sources */,
 				86304BEF24A2305800943D97 /* SceneDelegate.swift in Sources */,
+				86304C1D24A3233600943D97 /* VerticalStackView.swift in Sources */,
 				67E01A23B8FC4A35B72C165A /* AmplifyModels.swift in Sources */,
 				86304C1324A313AF00943D97 /* ArticleTableViewCell.swift in Sources */,
 				86304C0E24A24AD900943D97 /* ArticleController.swift in Sources */,
 				E2171A02E07342AEAD071685 /* Article.swift in Sources */,
 				790983094A984BCDA11BA540 /* Article+Schema.swift in Sources */,
 				86304C1124A24B5000943D97 /* Articles.swift in Sources */,
+				86304C1B24A3233600943D97 /* UIView+ConstraintLayout.swift in Sources */,
+				86304C1C24A3233600943D97 /* HorizontalStackView.swift in Sources */,
+				86304C2324A32F2800943D97 /* ColorTheme.swift in Sources */,
 				60FA394D37984EE5818EDC36 /* Status.swift in Sources */,
+				86304C2124A32D5E00943D97 /* ArticleDetailViewController.swift in Sources */,
+				41C502995E8B40E69E0C0DA5 /* ArticleCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -65,6 +65,7 @@ class ArticleController {
                                            completion: { result in
                                             switch(result) {
                                             case .success(let savedArticle):
+                                                print("==== Article ====")
                                                 print("Saved item: \(savedArticle.title )")
                                             case .failure(let error):
                                                 print("Could not update data in Datastore: \(error)")
@@ -84,6 +85,7 @@ class ArticleController {
                                                completion: { result in
                                                 switch(result) {
                                                 case .success(let savedArticle):
+                                                    print("==== Article ====")
                                                     print("Updated item: \(savedArticle.title )")
                                                 case .failure(let error):
                                                     print("Could not update data in Datastore: \(error)")
@@ -96,6 +98,32 @@ class ArticleController {
             case .failure(let error):
                 print("Could not query DataStore: \(error)")
             }
+        })
+    }
+    
+    func deleteArticle(matching id: String) {
+         Amplify.DataStore.query(Article.self,
+                                 where: Article.keys.id.eq(id),
+                                 completion: { result in
+             switch(result) {
+             case .success(let articles):
+                 guard articles.count == 1, let toDeleteArticle = articles.first else {
+                     print("Did not find exactly one todo, bailing")
+                     return
+                 }
+                 Amplify.DataStore.delete(toDeleteArticle,
+                                          completion: { result in
+                                             switch(result) {
+                                             case .success:
+                                                 print("==== Article ====")
+                                                 print("Deleted item: \(toDeleteArticle.title)")
+                                             case .failure(let error):
+                                                 print("Could not update data in Datastore: \(error)")
+                                             }
+                 })
+             case .failure(let error):
+                 print("Could not query DataStore: \(error)")
+             }
         })
     }
 }

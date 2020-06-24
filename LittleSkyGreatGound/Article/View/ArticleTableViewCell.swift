@@ -10,15 +10,14 @@ import UIKit
 
 class ArticleTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
+        textLabel?.textColor = .darkGray
+        detailTextLabel?.textColor = .darkGray
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    required init?(coder: NSCoder) {
+      fatalError()
     }
 
 }
