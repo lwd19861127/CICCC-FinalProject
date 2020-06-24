@@ -1,0 +1,6 @@
+framework module Pods_LittleSkyGreatGound {
+  umbrella header "Pods-LittleSkyGreatGound-umbrella.h"
+
+  export *
+  module * { export * }
+}

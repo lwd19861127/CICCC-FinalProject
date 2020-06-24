@@ -1,0 +1,55 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateArticle {
+  onCreateArticle {
+    id
+    title
+    date
+    link
+    status
+    image
+    categories
+    priority
+    description
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateArticle {
+  onUpdateArticle {
+    id
+    title
+    date
+    link
+    status
+    image
+    categories
+    priority
+    description
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteArticle {
+  onDeleteArticle {
+    id
+    title
+    date
+    link
+    status
+    image
+    categories
+    priority
+    description
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

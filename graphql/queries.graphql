@@ -1,0 +1,77 @@
+# this is an auto generated file. This will be overwritten
+query SyncArticles(
+  $filter: ModelArticleFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncArticles(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetArticle($id: ID!) {
+  getArticle(id: $id) {
+    id
+    title
+    date
+    link
+    status
+    image
+    categories
+    priority
+    description
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListArticles(
+  $filter: ModelArticleFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  listArticles(filter: $filter, limit: $limit, nextToken: $nextToken) {
+    items {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}

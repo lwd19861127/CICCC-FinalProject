@@ -1,0 +1,16 @@
+enum Status {
+  ON
+  OFF
+}
+
+type Article @model {
+  id: ID!
+  title: String!
+  date: AWSDateTime!
+  link: String!
+  status: Status!
+  image: String
+  categories: String
+  priority: Int
+  description: String
+}
