@@ -16,12 +16,15 @@ class ArticleController {
     var articles = Articles()
     {
         didSet {
+            NotificationCenter.default.post(name: ArticleController.articlesUpdatedNotification, object: nil)
         }
     }
     
-    init(){}
     static let shared = ArticleController()
-    
+    static let articlesUpdatedNotification = Notification.Name("ArticleController.articlesUpdated")
+
+    init(){}
+
     func subscribeArticles() {
        self.articleSubscription
            = Amplify.DataStore.publisher(for: Article.self)
@@ -32,7 +35,7 @@ class ArticleController {
                })
     }
     
-    func readArticles(){
+    func readArticles(complet: () -> Void){
         Amplify.DataStore.query(Article.self,
                                 where: Article.keys.status.eq(Status.on),
                                 completion: {result in
@@ -44,6 +47,7 @@ class ArticleController {
                                                 return
                                             }
                                             self.articles.articleList = dbArticles
+                                            complet()
                                             for article in dbArticles {
                                                 print("==== Article ====")
                                                 print("Name: \(article.title)")

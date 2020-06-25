@@ -12,56 +12,82 @@ import WebKit
 class ArticleDetailViewController: UIViewController {
 
     private var wkWebView: WKWebView!
-    private var loadingView: UIView!
+    private var activityIndicator: UIActivityIndicatorView!
+    private var refreshControl: UIRefreshControl!
 
-
-    var article: Article! {
-      didSet {
-        
-      }
-    }
+    var article: Article!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
         
         ///LoadingView
-        setupLoadingView()
+        setupActivityIndicator()
         
         ///WebView
         setupWebView()
+        
+        ///Refresh Control
+        setupRefresh()
+        
+        ///Load Webpage
+        loadWebPage()
     }
     
-    fileprivate func setupLoadingView() {
-        loadingView = UIView()
-        let loadingImage = UIImageView(image: UIImage(systemName: "globe"))
-        loadingView.addSubview(loadingImage)
-        loadingImage.centerXYin(loadingView)
-        view.addSubview(loadingView)
-        loadingView.matchParent()
+    fileprivate func setupActivityIndicator() {
+        activityIndicator = UIActivityIndicatorView()
+        activityIndicator.color = .backgroundColorOpposite
+        activityIndicator.center = view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.medium
+        view.addSubview(activityIndicator)
     }
     
     fileprivate func setupWebView() {
         let webConfiguration = WKWebViewConfiguration()
         let webView = WKWebView(frame: .zero, configuration: webConfiguration)
         wkWebView = webView
-
-        webView.isHidden = true
         webView.navigationDelegate = self
         webView.allowsBackForwardNavigationGestures = true
-        let myURL = URL(string:"https://mp.weixin.qq.com/s/rq6Ixtvry65XZZKhIt3qZw")
-        let myRequest = URLRequest(url: myURL!)
-        webView.load(myRequest)
         view.addSubview(webView)
         webView.matchParent()
+    }
+    
+    fileprivate func setupRefresh() {
+        refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshWebView(_:)), for: .valueChanged)
+        wkWebView.scrollView.refreshControl = refreshControl
+    }
+    
+    fileprivate func loadWebPage(){
+        let myURL = URL(string:article.link)
+        let myRequest = URLRequest(url: myURL!)
+        wkWebView.load(myRequest)
+    }
+    
+    @objc func refreshWebView(_ sender: UIRefreshControl) {
+        wkWebView?.reload()
     }
 }
 
 extension ArticleDetailViewController: WKNavigationDelegate {
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-        UIView.animate(withDuration: 0.8) {
-            self.loadingView.isHidden = true
-            self.wkWebView.isHidden = false
-        }
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!){
+        activityIndicator.stopAnimating()
+        refreshControl.endRefreshing()
+        perform(#selector(showWkWebView), with: self, afterDelay: 0.2)
+    }
+
+    @objc func showWkWebView() {
+        wkWebView.isHidden = false
+    }
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        activityIndicator.startAnimating()
+        wkWebView.isHidden = true
+    }
+
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+        activityIndicator.stopAnimating()
+        refreshControl.endRefreshing()
     }
 }

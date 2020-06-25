@@ -13,7 +13,8 @@ class ArticleViewController: UIViewController {
 
     private var tableView: UITableView!
     private let searchController = UISearchController(searchResultsController: nil)
-
+    private var refreshController: UIRefreshControl!
+    
     private let cellId = "ArticleCell"
     
     private var filteredArticles: [Article] = []
@@ -30,6 +31,8 @@ class ArticleViewController: UIViewController {
         view.backgroundColor = .backgroundColor
 
         ArticleController.shared.subscribeArticles()
+        
+        ///save
 //        var article1 = Article(title: "First Article", date: Temporal.DateTime(Date()), link: "http://", status: Status.on)
 //        article1.description = "update"
 //        article1.categories = ArticleCategory.bookRecommendations
@@ -38,7 +41,8 @@ class ArticleViewController: UIViewController {
 //        article2.categories = ArticleCategory.parentalExperiences
 //        ArticleController.shared.findOrSaveArticle(matching: article1)
 //        ArticleController.shared.findOrSaveArticle(matching: article2)
-        ArticleController.shared.readArticles()
+        
+        ///delete
 //        for article in ArticleController.shared.articles.articleList {
 //            ArticleController.shared.deleteArticle(matching: article.id)
 //        }
@@ -51,6 +55,13 @@ class ArticleViewController: UIViewController {
         
         /// Search Bar
         setupSearchController()
+        
+        ///Refresh Controller
+        setupRefresh()
+        
+        searchForArticles()
+        
+        NotificationCenter.default.addObserver(tableView!, selector: #selector(tableView.reloadData), name: ArticleController.articlesUpdatedNotification, object: nil)
     }
     
     fileprivate func setupNavigation() {
@@ -76,6 +87,24 @@ class ArticleViewController: UIViewController {
       definesPresentationContext = true
         
         searchController.searchBar.scopeButtonTitles = ["All", ArticleCategory.bookRecommendations.rawValue, ArticleCategory.parentalExperiences.rawValue]
+    }
+    
+    fileprivate func setupRefresh() {
+        refreshController = UIRefreshControl()
+        refreshController.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshController
+    }
+    
+    @objc func refresh(_ sender: UIRefreshControl) {
+        searchForArticles()
+    }
+    
+    private func searchForArticles() {
+        DispatchQueue.main.async {
+            ArticleController.shared.readArticles {
+                self.tableView.refreshControl?.endRefreshing()
+            }
+        }
     }
     
     private func filterArticleFor(searchText: String, category: ArticleCategory? = nil) {
