@@ -7,8 +7,12 @@ target 'LittleSkyGreatGound' do
 
   # Pods for LittleSkyGreatGound
 
+  # cloud DataBase
   pod 'Amplify'
   pod 'Amplify/Tools'
   pod 'AmplifyPlugins/AWSAPIPlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
+
+  # SDWebImage
+  pod 'SDWebImage'
 end

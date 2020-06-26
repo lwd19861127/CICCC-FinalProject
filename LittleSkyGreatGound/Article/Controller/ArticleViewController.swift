@@ -32,21 +32,6 @@ class ArticleViewController: UIViewController {
 
         ArticleController.shared.subscribeArticles()
         
-        ///save
-//        var article1 = Article(title: "First Article", date: Temporal.DateTime(Date()), link: "http://", status: Status.on)
-//        article1.description = "update"
-//        article1.categories = ArticleCategory.bookRecommendations
-//        var article2 = Article(title: "Tidy up the office", date: Temporal.DateTime(Date()), link: "http://", status: Status.on)
-//        article2.description = "update"
-//        article2.categories = ArticleCategory.parentalExperiences
-//        ArticleController.shared.findOrSaveArticle(matching: article1)
-//        ArticleController.shared.findOrSaveArticle(matching: article2)
-        
-        ///delete
-//        for article in ArticleController.shared.articles.articleList {
-//            ArticleController.shared.deleteArticle(matching: article.id)
-//        }
-        
         /// Navigation Bar
         setupNavigation()
         
@@ -139,8 +124,7 @@ extension ArticleViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ArticleTableViewCell
     let article = isFiltering ? filteredArticles[indexPath.row] : ArticleController.shared.articles.articleList[indexPath.row]
-    cell.textLabel?.text = article.title
-    cell.detailTextLabel?.text = article.date.foundationDate.datatypeValue
+    cell.article = article
     return cell
   }
 }
@@ -152,6 +136,7 @@ extension ArticleViewController: UITableViewDelegate {
         let articleDetailVC = ArticleDetailViewController()
         articleDetailVC.article = isFiltering ? filteredArticles[indexPath.row] : ArticleController.shared.articles.articleList[indexPath.row]
         navigationController?.pushViewController(articleDetailVC, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

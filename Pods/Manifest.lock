@@ -31,6 +31,9 @@ PODS:
     - AWSCore (~> 2.13.4)
     - AWSMobileClient (~> 2.13.4)
   - ReachabilitySwift (5.0.0)
+  - SDWebImage (5.8.1):
+    - SDWebImage/Core (= 5.8.1)
+  - SDWebImage/Core (5.8.1)
   - SQLite.swift (0.12.2):
     - SQLite.swift/standard (= 0.12.2)
   - SQLite.swift/standard (0.12.2)
@@ -41,6 +44,7 @@ DEPENDENCIES:
   - Amplify/Tools
   - AmplifyPlugins/AWSAPIPlugin
   - AmplifyPlugins/AWSDataStorePlugin
+  - SDWebImage
 
 SPEC REPOS:
   trunk:
@@ -54,6 +58,7 @@ SPEC REPOS:
     - AWSMobileClient
     - AWSPluginsCore
     - ReachabilitySwift
+    - SDWebImage
     - SQLite.swift
     - Starscream
 
@@ -68,9 +73,10 @@ SPEC CHECKSUMS:
   AWSMobileClient: 33ecce524fbc011d543dae8306ca29a43ecb72e5
   AWSPluginsCore: 37ee45209a3251502893504072a6c4fc0af6f6e4
   ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
+  SDWebImage: e3eae2eda88578db0685a0c88597fdadd9433f05
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: 19012200dd751762318b3bad3a7c349e4638d445
+PODFILE CHECKSUM: 432d53774d4ae9e762b9d71a7375a96a3e8164ae
 
 COCOAPODS: 1.9.3

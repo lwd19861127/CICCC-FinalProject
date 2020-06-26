@@ -36,7 +36,7 @@ class ArticleDetailViewController: UIViewController {
     
     fileprivate func setupActivityIndicator() {
         activityIndicator = UIActivityIndicatorView()
-        activityIndicator.color = .backgroundColorOpposite
+        activityIndicator.color = .lightGray
         activityIndicator.center = view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = UIActivityIndicatorView.Style.medium

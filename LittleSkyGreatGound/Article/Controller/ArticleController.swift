@@ -48,6 +48,11 @@ class ArticleController {
                                             }
                                             self.articles.articleList = dbArticles
                                             complet()
+                                            
+                                            ///test
+                                            //testFindOrSaveArticle()
+                                            //testDeleteArticles()
+                                            
                                             for article in dbArticles {
                                                 print("==== Article ====")
                                                 print("Name: \(article.title)")
@@ -58,9 +63,34 @@ class ArticleController {
                                     })
     }
     
+    ///test
+    func testFindOrSaveArticle() {
+        //        ///save
+        //        var article1 = Article(title: "Did you start studying at the age of 0?  What do you read before picture book?", date: Temporal.DateTime(Date()), link: "http://", status: Status.on)
+        //        article1.description = "update"
+        ////        article1.categories = ArticleCategory.bookRecommendations
+        //        var article2 = Article(title: "The book I planned is on the market, the hard-core books that American elementary school students are reading, friends and family are turning up!", date: Temporal.DateTime(Date()), link: "http://", status: Status.on)
+        //        article2.description = "update"
+        //        article2.categories = ArticleCategory.parentalExperiences
+        guard ArticleController.shared.articles.articleList.count > 0 else {
+            return
+        }
+        ArticleController.shared.articles.articleList[0].image = "https://cdn.cnn.com/cnnnext/dam/assets/200624161858-01-dolphin-tools-learning-super-tease.jpg"
+        ArticleController.shared.articles.articleList[1].image = "https://cdn.cnn.com/cnnnext/dam/assets/200622094323-hong-kong-china-national-security-law-0620-super-tease.jpg"
+                ArticleController.shared.findOrSaveArticle(matching: ArticleController.shared.articles.articleList[0])
+                ArticleController.shared.findOrSaveArticle(matching: ArticleController.shared.articles.articleList[1])
+    }
+    
+    ///test
+    func testDeleteArticles() {
+        for article in ArticleController.shared.articles.articleList {
+            ArticleController.shared.deleteArticle(matching: article.id)
+        }
+    }
+    
     func findOrSaveArticle(matching item: Article) {
         Amplify.DataStore.query(Article.self,
-                                where: Article.keys.title.eq(item.title),
+                                where: Article.keys.id.eq(item.id),
                                 completion: { result in
             switch(result) {
             case .success(let articles):
