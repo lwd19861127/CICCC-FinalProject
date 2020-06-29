@@ -23,6 +23,7 @@
 		86304C1324A313AF00943D97 /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86304C1224A313AF00943D97 /* ArticleTableViewCell.swift */; };
 		E2171A02E07342AEAD071685 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3363D7ED774646945EB099 /* Article.swift */; };
 		EBA3FA4879E9460BAF5EB141 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = BE4F46FFDBA043778B22472B /* amplifyconfiguration.json */; };
+		D9F25B5962DA46D59C99FA2B /* ArticleCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A57508774074394A1FE7A6B /* ArticleCategory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		B8B5F32080B24426AEF4E4FE /* amplifytools.xcconfig */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.xcconfig; path = amplifytools.xcconfig; sourceTree = "<group>"; };
 		BE4F46FFDBA043778B22472B /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = amplifyconfiguration.json; sourceTree = "<group>"; };
 		FD3363D7ED774646945EB099 /* Article.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = Article.swift; path = amplify/generated/models/Article.swift; sourceTree = "<group>"; };
+		6A57508774074394A1FE7A6B /* ArticleCategory.swift */ = {isa = PBXFileReference; name = "ArticleCategory.swift"; path = "amplify/generated/models/ArticleCategory.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,9 +185,18 @@
 				FD3363D7ED774646945EB099 /* Article.swift */,
 				580D4051A7EA409AB3457FFE /* Article+Schema.swift */,
 				A9879103AE734501A999F4C5 /* Status.swift */,
+				6A57508774074394A1FE7A6B /* ArticleCategory.swift */,
 			);
 			name = AmplifyModels;
 			path = .;
+			sourceTree = "<group>";
+		};
+		64B02EA1219B4934B9494DFA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			path = undefined;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +345,7 @@
 				790983094A984BCDA11BA540 /* Article+Schema.swift in Sources */,
 				86304C1124A24B5000943D97 /* Articles.swift in Sources */,
 				60FA394D37984EE5818EDC36 /* Status.swift in Sources */,
+				D9F25B5962DA46D59C99FA2B /* ArticleCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -31,7 +31,7 @@ extension Article {
       .field(article.link, is: .required, ofType: .string),
       .field(article.status, is: .required, ofType: .enum(type: Status.self)),
       .field(article.image, is: .optional, ofType: .string),
-      .field(article.categories, is: .optional, ofType: .string),
+      .field(article.categories, is: .optional, ofType: .enum(type: ArticleCategory.self)),
       .field(article.priority, is: .optional, ofType: .int),
       .field(article.description, is: .optional, ofType: .string)
     )

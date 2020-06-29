@@ -9,7 +9,7 @@ public struct Article: Model {
   public var link: String
   public var status: Status
   public var image: String?
-  public var categories: String?
+  public var categories: ArticleCategory?
   public var priority: Int?
   public var description: String?
   
@@ -19,7 +19,7 @@ public struct Article: Model {
       link: String,
       status: Status,
       image: String? = nil,
-      categories: String? = nil,
+      categories: ArticleCategory? = nil,
       priority: Int? = nil,
       description: String? = nil) {
       self.id = id
