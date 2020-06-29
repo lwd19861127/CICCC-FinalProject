@@ -12,4 +12,7 @@ target 'LittleSkyGreatGound' do
   pod 'AmplifyPlugins/AWSAPIPlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
   pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
+  
+  # SDWebImage
+  pod 'SDWebImage'
 end
