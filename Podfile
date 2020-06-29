@@ -11,6 +11,7 @@ target 'LittleSkyGreatGound' do
   pod 'Amplify/Tools'
   pod 'AmplifyPlugins/AWSAPIPlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
+  pod 'AmplifyPlugins/AWSS3StoragePlugin'
   pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
   
   # SDWebImage

@@ -1,6 +1,6 @@
 {
     "identityPoolName": "littleskygreatgound4c54074d_identitypool_4c54074d",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "little4c54074d",
     "userPoolName": "littleskygreatgound4c54074d_userpool_4c54074d",
     "autoVerifiedAttributes": [
