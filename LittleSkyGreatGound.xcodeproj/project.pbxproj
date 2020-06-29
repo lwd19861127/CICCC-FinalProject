@@ -26,6 +26,8 @@
 		86CF02F724A981B300607D20 /* UIView+ConstraintLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF02F624A981B300607D20 /* UIView+ConstraintLayout.swift */; };
 		86CF02F924A981CC00607D20 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF02F824A981CC00607D20 /* VerticalStackView.swift */; };
 		86CF02FB24A983E200607D20 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF02FA24A983E200607D20 /* ArticleDetailViewController.swift */; };
+		86CF030124A9924B00607D20 /* MyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF030024A9924B00607D20 /* MyController.swift */; };
+		86CF030324A9928300607D20 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF030224A9928300607D20 /* MyViewController.swift */; };
 		D9F25B5962DA46D59C99FA2B /* ArticleCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A57508774074394A1FE7A6B /* ArticleCategory.swift */; };
 		E2171A02E07342AEAD071685 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3363D7ED774646945EB099 /* Article.swift */; };
 		EBA3FA4879E9460BAF5EB141 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = BE4F46FFDBA043778B22472B /* amplifyconfiguration.json */; };
@@ -53,6 +55,8 @@
 		86CF02F624A981B300607D20 /* UIView+ConstraintLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ConstraintLayout.swift"; sourceTree = "<group>"; };
 		86CF02F824A981CC00607D20 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		86CF02FA24A983E200607D20 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
+		86CF030024A9924B00607D20 /* MyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyController.swift; sourceTree = "<group>"; };
+		86CF030224A9928300607D20 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		9607A527C5B22024AF7101F7 /* Pods-LittleSkyGreatGound.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleSkyGreatGound.debug.xcconfig"; path = "Target Support Files/Pods-LittleSkyGreatGound/Pods-LittleSkyGreatGound.debug.xcconfig"; sourceTree = "<group>"; };
 		A9879103AE734501A999F4C5 /* Status.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = Status.swift; path = amplify/generated/models/Status.swift; sourceTree = "<group>"; };
 		AA6A66F0B2984BF1A1E4BCE9 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = awsconfiguration.json; sourceTree = "<group>"; };
@@ -118,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				86304C0724A2366400943D97 /* Article */,
+				86CF02FC24A990DB00607D20 /* My */,
 				86304C0224A234D100943D97 /* Controller */,
 				86304C0124A234B900943D97 /* Support */,
 				86CF02F124A9811F00607D20 /* Utils */,
@@ -190,6 +195,39 @@
 				86CF02F824A981CC00607D20 /* VerticalStackView.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		86CF02FC24A990DB00607D20 /* My */ = {
+			isa = PBXGroup;
+			children = (
+				86CF02FD24A990F200607D20 /* Model */,
+				86CF02FE24A991E000607D20 /* View */,
+				86CF02FF24A991F900607D20 /* Controller */,
+			);
+			path = My;
+			sourceTree = "<group>";
+		};
+		86CF02FD24A990F200607D20 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		86CF02FE24A991E000607D20 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		86CF02FF24A991F900607D20 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				86CF030024A9924B00607D20 /* MyController.swift */,
+				86CF030224A9928300607D20 /* MyViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 		9E1293734B6B7541EF059D4D /* Pods */ = {
@@ -352,10 +390,12 @@
 				86304C0624A2365400943D97 /* MainTabBarViewController.swift in Sources */,
 				86304C0A24A2380B00943D97 /* ArticleViewController.swift in Sources */,
 				86304BED24A2305800943D97 /* AppDelegate.swift in Sources */,
+				86CF030124A9924B00607D20 /* MyController.swift in Sources */,
 				86304BEF24A2305800943D97 /* SceneDelegate.swift in Sources */,
 				86CF02FB24A983E200607D20 /* ArticleDetailViewController.swift in Sources */,
 				67E01A23B8FC4A35B72C165A /* AmplifyModels.swift in Sources */,
 				86CF02F324A9814700607D20 /* ColorTheme.swift in Sources */,
+				86CF030324A9928300607D20 /* MyViewController.swift in Sources */,
 				86304C1324A313AF00943D97 /* ArticleTableViewCell.swift in Sources */,
 				86304C0E24A24AD900943D97 /* ArticleController.swift in Sources */,
 				E2171A02E07342AEAD071685 /* Article.swift in Sources */,

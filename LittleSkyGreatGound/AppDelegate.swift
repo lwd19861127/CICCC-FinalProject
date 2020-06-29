@@ -26,6 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            try Amplify.add(plugin: AWSS3StoragePlugin())
            try Amplify.add(plugin: AWSCognitoAuthPlugin())
            try Amplify.configure()
+            
+           listenSignInAndOut()
+            
            print("Initialized Amplify");
         } catch {
            print("Could not initialize Amplify: \(error)")
@@ -48,6 +51,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    func listenSignInAndOut() {
+        _ = Amplify.Hub.listen(to: .auth) { (payload) in
+
+            switch payload.eventName {
+
+            case HubPayload.EventName.Auth.signedIn:
+                print("==HUB== User signed In, update UI")
+
+                // if you want to get user attributes
+                _ = Amplify.Auth.fetchUserAttributes() { (result) in
+                    switch result {
+                    case .success(let attributes):
+                        print("User attribtues - \(attributes)")
+                    case .failure(let error):
+                        print("Fetching user attributes failed with error \(error)")
+                    }
+                }
+
+            case HubPayload.EventName.Auth.signedOut:
+                print("==HUB== User signed Out, update UI")
+                
+            case HubPayload.EventName.Auth.sessionExpired:
+                print("==HUB== Session expired, show sign in aui")
+
+            default:
+                //print("==HUB== \(payload)")
+                break
+            }
+        }
+
+    }
 
 }
 

@@ -14,7 +14,7 @@
         "categories": {
             "auth": {
                 "littleskygreatgound4c54074d": {
-                    "hostedUIProviderCreds": "[]"
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Google\",\"client_id\":\"998900820475-7a3mhp2rr1ve56o96np0mikddgbhhrvp.apps.googleusercontent.com\",\"client_secret\":\"PHdM4rP96Ftzi6uajQtuSkBb\"}]"
                 }
             }
         }
