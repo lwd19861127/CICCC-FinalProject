@@ -9,6 +9,11 @@ PODS:
     - AWSCore (~> 2.13.4)
     - AWSPluginsCore (= 1.0.1)
     - ReachabilitySwift (~> 5.0.0)
+  - AmplifyPlugins/AWSCognitoAuthPlugin (1.0.1):
+    - AWSAuthCore (~> 2.13.4)
+    - AWSCore (~> 2.13.4)
+    - AWSMobileClient (~> 2.13.4)
+    - AWSPluginsCore (= 1.0.1)
   - AmplifyPlugins/AWSDataStorePlugin (1.0.1):
     - AWSAuthCore (~> 2.13.4)
     - AWSCore (~> 2.13.4)
@@ -40,6 +45,7 @@ DEPENDENCIES:
   - Amplify
   - Amplify/Tools
   - AmplifyPlugins/AWSAPIPlugin
+  - AmplifyPlugins/AWSCognitoAuthPlugin
   - AmplifyPlugins/AWSDataStorePlugin
 
 SPEC REPOS:
@@ -71,6 +77,6 @@ SPEC CHECKSUMS:
   SQLite.swift: d2b4642190917051ce6bd1d49aab565fe794eea3
   Starscream: ef3ece99d765eeccb67de105bfa143f929026cf5
 
-PODFILE CHECKSUM: 19012200dd751762318b3bad3a7c349e4638d445
+PODFILE CHECKSUM: b24b94d691f86ecffb8fc6120aa8a2a3d4b21c0f
 
 COCOAPODS: 1.9.3

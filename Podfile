@@ -11,4 +11,5 @@ target 'LittleSkyGreatGound' do
   pod 'Amplify/Tools'
   pod 'AmplifyPlugins/AWSAPIPlugin'
   pod 'AmplifyPlugins/AWSDataStorePlugin'
+  pod 'AmplifyPlugins/AWSCognitoAuthPlugin'
 end
