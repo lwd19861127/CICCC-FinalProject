@@ -28,6 +28,7 @@
 		86CF02FB24A983E200607D20 /* ArticleDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF02FA24A983E200607D20 /* ArticleDetailViewController.swift */; };
 		86CF030124A9924B00607D20 /* MyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF030024A9924B00607D20 /* MyController.swift */; };
 		86CF030324A9928300607D20 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF030224A9928300607D20 /* MyViewController.swift */; };
+		86FC744A24AAB75600B69E41 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC744924AAB75600B69E41 /* UserData.swift */; };
 		D9F25B5962DA46D59C99FA2B /* ArticleCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A57508774074394A1FE7A6B /* ArticleCategory.swift */; };
 		E2171A02E07342AEAD071685 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3363D7ED774646945EB099 /* Article.swift */; };
 		EBA3FA4879E9460BAF5EB141 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = BE4F46FFDBA043778B22472B /* amplifyconfiguration.json */; };
@@ -57,6 +58,7 @@
 		86CF02FA24A983E200607D20 /* ArticleDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleDetailViewController.swift; sourceTree = "<group>"; };
 		86CF030024A9924B00607D20 /* MyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyController.swift; sourceTree = "<group>"; };
 		86CF030224A9928300607D20 /* MyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		86FC744924AAB75600B69E41 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		9607A527C5B22024AF7101F7 /* Pods-LittleSkyGreatGound.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleSkyGreatGound.debug.xcconfig"; path = "Target Support Files/Pods-LittleSkyGreatGound/Pods-LittleSkyGreatGound.debug.xcconfig"; sourceTree = "<group>"; };
 		A9879103AE734501A999F4C5 /* Status.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = Status.swift; path = amplify/generated/models/Status.swift; sourceTree = "<group>"; };
 		AA6A66F0B2984BF1A1E4BCE9 /* awsconfiguration.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = awsconfiguration.json; sourceTree = "<group>"; };
@@ -210,6 +212,7 @@
 		86CF02FD24A990F200607D20 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				86FC744924AAB75600B69E41 /* UserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -405,6 +408,7 @@
 				86CF02F524A9816D00607D20 /* HorizontalStackView.swift in Sources */,
 				86CF02F924A981CC00607D20 /* VerticalStackView.swift in Sources */,
 				60FA394D37984EE5818EDC36 /* Status.swift in Sources */,
+				86FC744A24AAB75600B69E41 /* UserData.swift in Sources */,
 				D9F25B5962DA46D59C99FA2B /* ArticleCategory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

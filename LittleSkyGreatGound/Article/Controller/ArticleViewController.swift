@@ -50,7 +50,7 @@ class ArticleViewController: UIViewController {
     }
     
     fileprivate func setupNavigation() {
-        navigationItem.title = "Articles"
+        navigationItem.title = "LittleSkyGreatGround"
     }
     
     fileprivate func setupTableView() {
