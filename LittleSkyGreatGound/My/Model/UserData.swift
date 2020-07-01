@@ -10,8 +10,9 @@ import Foundation
 
 struct UserData {
     var userID: String = ""
+    var userName: String = ""
 }
 
-struct IsSignedIn {
-    var isSignedIn:Bool = false
+struct AuthSession {
+    var isSignedIn:Bool!
 }

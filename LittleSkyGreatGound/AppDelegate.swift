@@ -26,10 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
            try Amplify.add(plugin: AWSS3StoragePlugin())
            try Amplify.add(plugin: AWSCognitoAuthPlugin())
            try Amplify.configure()
-            
-            MyController.shared.fetchCurrentAuthSession()
-            MyController.shared.listenSignInAndOut()
-            
            print("Initialized Amplify");
         } catch {
            print("Could not initialize Amplify: \(error)")

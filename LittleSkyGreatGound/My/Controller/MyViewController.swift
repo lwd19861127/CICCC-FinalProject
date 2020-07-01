@@ -8,7 +8,10 @@
 
 import UIKit
 
-class MyViewController: UIViewController {
+class MyViewController: UIViewController, MyControllerDelegate {
+    
+    private var signOutButton:UIBarButtonItem!
+    private var refreshController: UIRefreshControl!
     
     private var userImage: UIImageView = {
         let iv = UIImageView()
@@ -23,38 +26,54 @@ class MyViewController: UIViewController {
         return iv
     }()
     
-    private var userIDButton: UIButton!
-    
-    private var signOutButton:UIBarButtonItem!
+    private var userIDButton:UIButton = {
+        let bt = UIButton()
+        bt.setTitle("Hi, there!", for: .normal)
+        bt.setTitleColor(.black, for: .normal)
+        bt.titleLabel?.font = .preferredFont(forTextStyle: .headline)
+        bt.contentHorizontalAlignment = .left
+        return bt
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
-        
+        MyController.shared.delegate = self
+
         /// Navigation Bar
         setupNavigation()
+        
+        ///Refresh Controller
+        setupRefresh()
         
         ///UserID Button
         setupUserIDButton()
         
         ///StackView
         setupStackView()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(updateUI), name: MyController.userDataUpdatedNotification, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        MyController.shared.getCurrentUser()
     }
     
     fileprivate func setupNavigation() {
         navigationItem.title = "LittleSkyGreatGround"
-        signOutButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(signOut))
+        signOutButton = UIBarButtonItem(barButtonSystemItem: .stop, target: self, action: #selector(confirmToSignOut))
         navigationItem.rightBarButtonItem = signOutButton
         navigationController?.navigationBar.backgroundColor = .white
     }
     
+    fileprivate func setupRefresh() {
+        refreshController = UIRefreshControl()
+        refreshController.addTarget(self, action: #selector(refresh(_:)), for: .valueChanged)
+    }
+    
+    @objc func refresh(_ sender: UIRefreshControl) {
+        MyController.shared.getCurrentUser()
+    }
+    
     fileprivate func setupUserIDButton() {
-        userIDButton = UIButton()
-        userIDButton.setTitleColor(.black, for: .normal)
-        userIDButton.titleLabel?.font = .preferredFont(forTextStyle: .headline)
-        userIDButton.contentHorizontalAlignment = .left
         userIDButton.addTarget(self, action: #selector(signIn), for: .touchUpInside)
     }
 
@@ -63,26 +82,41 @@ class MyViewController: UIViewController {
         leadingView.widthAnchor.constraint(equalToConstant: 10).isActive = true
         let hStackView = HorizontalStackView(arrangedSubviews: [leadingView, userImage, userIDButton], spacing: 20, alignment: .center, distribution: .fill)
         view.addSubview(hStackView)
-        hStackView.anchors(topAnchor: view.safeAreaLayoutGuide.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil, padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0), size: .zero)
+        hStackView.anchors(topAnchor: view.safeAreaLayoutGuide.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil, padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0), size: .zero)
     }
     
-    @objc func updateUI() {
+    func updateUserName(forIsSignedInStatus isSignedIn: Bool, withUserName userName: String) {
         DispatchQueue.main.async() {
-            if MyController.shared.authSession.isSignedIn {
+            if isSignedIn {
                 self.userIDButton.isEnabled = false
-                self.userIDButton.setTitle(MyController.shared.userData.userID, for: .normal)
             }else {
                 self.userIDButton.isEnabled = true
-                self.userIDButton.setTitle("Press to Login", for: .normal)
             }
+            self.userIDButton.setTitle(userName, for: .normal)
         }
     }
     
     @objc func signIn() {
-           MyController.shared.signInWithWebUI()
-       }
+        MyController.shared.signInWithWebUI()
+    }
     
-    @objc func signOut() {
+    @objc func confirmToSignOut() {
+        let alertController = UIAlertController(title: "Prompt", message: "", preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil )
+        alertController.addAction(cancelAction)
+        if !MyController.shared.authSession.isSignedIn {
+            alertController.message = "Not Login"
+        }else {
+            alertController.message = "Are you sure to Logout?"
+            let confirmAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.default) { (ACTION) in
+                self.signOut()
+            }
+            alertController.addAction(confirmAction)
+        }
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func signOut() {
         MyController.shared.signOut()
     }
 

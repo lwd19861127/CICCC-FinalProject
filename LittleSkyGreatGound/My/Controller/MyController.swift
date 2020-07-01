@@ -9,17 +9,19 @@
 import Foundation
 import Amplify
 
+protocol MyControllerDelegate: class {
+  func updateUserName(forIsSignedInStatus isSignedIn: Bool, withUserName userName: String)
+}
+
 class MyController {
     
+    static let defaultUserName = "Press to Login"
+    weak var delegate: MyControllerDelegate?
+    
     var userData = UserData()
-    var authSession = IsSignedIn()
-    {
-        didSet {
-            NotificationCenter.default.post(name: MyController.userDataUpdatedNotification, object: nil)
-        }
-    }
+    var authSession = AuthSession()
+
     static let shared = MyController()
-    static let userDataUpdatedNotification = Notification.Name("MyController.userDataUpdated")
     
     init(){}
     
@@ -27,9 +29,14 @@ class MyController {
         _ = Amplify.Auth.fetchAuthSession { result in
             switch result {
             case .success(let session):
-                self.fetchUserAttributes()
+                if session.isSignedIn {
+                    self.getCurrentUser()
+                }else {
+                    self.updateSignStatusAndMyViewUI(forIsSignedInStatus: false, withUserName: MyController.defaultUserName)
+                }
                 print("Is user signed in - \(session.isSignedIn)")
             case .failure(let error):
+                self.updateSignStatusAndMyViewUI(forIsSignedInStatus: false, withUserName: MyController.defaultUserName)
                 print("Fetch session failed with error \(error)")
             }
         }
@@ -39,36 +46,40 @@ class MyController {
         _ = Amplify.Auth.signInWithWebUI(presentationAnchor: UIApplication.shared.windows.first!) { result in
             switch result {
             case .success(_):
+                self.getCurrentUser()
                 print("Sign in succeeded")
             case .failure(let error):
+                self.fetchCurrentAuthSession()
                 print("Sign in failed \(error)")
             }
         }
     }
     
     func signOut() {
-        _ = Amplify.Auth.signOut() { result in
+        let options = AuthSignOutRequest.Options(globalSignOut: true)
+        _ = Amplify.Auth.signOut(options: options) { result in
             switch result {
             case .success:
                 print("Successfully signed out")
             case .failure(let error):
                 print("Sign out failed with error \(error)")
             }
+            self.updateSignStatusAndMyViewUI(forIsSignedInStatus: false, withUserName: MyController.defaultUserName)
         }
     }
     
     func listenSignInAndOut() {
         _ = Amplify.Hub.listen(to: .auth) { (payload) in
             switch payload.eventName {
-            case HubPayload.EventName.Auth.signedIn:
-                print("==HUB== User signed In, update UI")
-                // if you want to get user attributes
-                self.fetchUserAttributes()
-            case HubPayload.EventName.Auth.signedOut:
-                self.authSession.isSignedIn = false
-                print("==HUB== User signed Out, update UI")
+//            case HubPayload.EventName.Auth.signedIn:
+//                print("==HUB== User signed In, update UI")
+//                // if you want to get user attributes
+//                self.getCurrentUser()
+//            case HubPayload.EventName.Auth.signedOut:
+//                self.updateAuthSessionIsSignedIn(forIsSignedInStatus: false)
+//                print("==HUB== User signed Out, update UI")
             case HubPayload.EventName.Auth.sessionExpired:
-                self.authSession.isSignedIn = false
+                self.updateSignStatusAndMyViewUI(forIsSignedInStatus: false, withUserName: MyController.defaultUserName)
                 print("==HUB== Session expired, show sign in aui")
             default:
                 //print("==HUB== \(payload)")
@@ -77,21 +88,21 @@ class MyController {
         }
     }
 
-    func fetchUserAttributes() {
-        _ = Amplify.Auth.fetchUserAttributes() { (result) in
-            switch result {
-            case .success(let attributes):
-                for attribute in attributes {
-                    if attribute.key.rawValue == "email" {
-                        let email = attribute.value.split(separator: "@")
-                        self.userData.userID = String(email[0])
-                    }
-                }
-                self.authSession.isSignedIn = true
-                print("User attribtues - \(attributes)")
-            case .failure(let error):
-                print("Fetching user attributes failed with error \(error)")
-            }
+    func getCurrentUser() {
+        guard let user = Amplify.Auth.getCurrentUser() else {
+            self.updateSignStatusAndMyViewUI(forIsSignedInStatus: false, withUserName: MyController.defaultUserName)
+            print("Could not get user, perhaps the user is not signed in")
+            return
+        }
+        self.userData.userID = user.userId
+        self.userData.userName = user.username
+        self.updateSignStatusAndMyViewUI(forIsSignedInStatus: true, withUserName: user.username)
+    }
+    
+    func updateSignStatusAndMyViewUI(forIsSignedInStatus isSignedIn: Bool, withUserName userName: String) {
+        DispatchQueue.main.async() {
+            self.authSession.isSignedIn = isSignedIn
+            self.delegate?.updateUserName(forIsSignedInStatus: isSignedIn, withUserName: userName)
         }
     }
 }
