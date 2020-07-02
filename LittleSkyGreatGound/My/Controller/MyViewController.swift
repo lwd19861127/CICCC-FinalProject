@@ -12,6 +12,7 @@ class MyViewController: UIViewController, MyControllerDelegate {
     
     private var signOutButton:UIBarButtonItem!
     private var refreshController: UIRefreshControl!
+    private var hStackView: UIStackView!
     
     private var userImage: UIImageView = {
         let iv = UIImageView()
@@ -34,6 +35,8 @@ class MyViewController: UIViewController, MyControllerDelegate {
         bt.contentHorizontalAlignment = .left
         return bt
     }()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,14 +81,12 @@ class MyViewController: UIViewController, MyControllerDelegate {
     }
 
     fileprivate func setupStackView() {
-        let leadingView = UIImageView()
-        leadingView.widthAnchor.constraint(equalToConstant: 10).isActive = true
-        let hStackView = HorizontalStackView(arrangedSubviews: [leadingView, userImage, userIDButton], spacing: 20, alignment: .center, distribution: .fill)
+        hStackView = HorizontalStackView(arrangedSubviews: [userImage, userIDButton], spacing: 20, alignment: .center, distribution: .fill)
         view.addSubview(hStackView)
-        hStackView.anchors(topAnchor: view.safeAreaLayoutGuide.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil, padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0), size: .zero)
+        hStackView.anchors(topAnchor: view.safeAreaLayoutGuide.topAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: nil, padding: UIEdgeInsets(top: 20, left: 20, bottom: 0, right: 0), size: .zero)
     }
     
-    func updateUserName(forIsSignedInStatus isSignedIn: Bool, withUserName userName: String) {
+    func updateUI(forIsSignedInStatus isSignedIn: Bool, withUserName userName: String) {
         DispatchQueue.main.async() {
             if isSignedIn {
                 self.userIDButton.isEnabled = false

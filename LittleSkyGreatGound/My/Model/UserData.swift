@@ -11,6 +11,7 @@ import Foundation
 struct UserData {
     var userID: String = ""
     var userName: String = ""
+    var userEmail: String = ""
 }
 
 struct AuthSession {

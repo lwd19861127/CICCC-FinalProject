@@ -18,10 +18,12 @@ class MainTabBarViewController: UITabBarController {
         articleViewController.tabBarItem = UITabBarItem(title: "Aritcle", image: UIImage(systemName: "globe"), tag: 0)
         
         /**My**/
-        let myViewController = UINavigationController(rootViewController: MyViewController())
-        myViewController.tabBarItem = UITabBarItem(title: "My", image: UIImage(systemName: "globe"), tag: 1)
+//        let myViewController = UINavigationController(rootViewController: MyViewController())
+//        myViewController.tabBarItem = UITabBarItem(title: "My", image: UIImage(systemName: "globe"), tag: 1)
+        let myTableViewController = UINavigationController(rootViewController: MyTableViewController(style: .grouped))
+        myTableViewController.tabBarItem = UITabBarItem(title: "My", image: UIImage(systemName: "globe"), tag: 1)
         
-        let tabBarList = [articleViewController, myViewController]
+        let tabBarList = [articleViewController, myTableViewController]
         
         UITabBar.appearance().tintColor = UIColor(named: "highlightOrange")
         viewControllers = tabBarList

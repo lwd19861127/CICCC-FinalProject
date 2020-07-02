@@ -10,7 +10,7 @@ import Foundation
 import Amplify
 
 protocol MyControllerDelegate: class {
-  func updateUserName(forIsSignedInStatus isSignedIn: Bool, withUserName userName: String)
+  func updateUI(forIsSignedInStatus isSignedIn: Bool, withUserName userName: String)
 }
 
 class MyController {
@@ -97,12 +97,29 @@ class MyController {
         self.userData.userID = user.userId
         self.userData.userName = user.username
         self.updateSignStatusAndMyViewUI(forIsSignedInStatus: true, withUserName: user.username)
+        fetchAttributes()
     }
     
     func updateSignStatusAndMyViewUI(forIsSignedInStatus isSignedIn: Bool, withUserName userName: String) {
         DispatchQueue.main.async() {
             self.authSession.isSignedIn = isSignedIn
-            self.delegate?.updateUserName(forIsSignedInStatus: isSignedIn, withUserName: userName)
+            self.delegate?.updateUI(forIsSignedInStatus: isSignedIn, withUserName: userName)
+        }
+    }
+    
+    func fetchAttributes() {
+        _ = Amplify.Auth.fetchUserAttributes() { result in
+                switch result {
+                case .success(let attributes):
+                    for attribute in attributes {
+                        if attribute.key.rawValue == "email" {
+                            self.userData.userEmail = attribute.value
+                        }
+                    }
+                    print("User attributes - \(attributes)")
+                case .failure(let error):
+                    print("Fetching user attributes failed with error \(error)")
+                }
         }
     }
 }
