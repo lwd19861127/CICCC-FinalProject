@@ -14,6 +14,7 @@ class ArticleDetailViewController: UIViewController {
     private var wkWebView: WKWebView!
     private var activityIndicator: UIActivityIndicatorView!
     private var refreshControl: UIRefreshControl!
+    private var favoriteButton:UIBarButtonItem!
 
     var article: Article!
     
@@ -23,6 +24,9 @@ class ArticleDetailViewController: UIViewController {
         
         ///LoadingView
         setupActivityIndicator()
+        
+        /// Navigation Bar
+        setupNavigation()
         
         ///WebView
         setupWebView()
@@ -41,6 +45,11 @@ class ArticleDetailViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = UIActivityIndicatorView.Style.medium
         view.addSubview(activityIndicator)
+    }
+    
+    fileprivate func setupNavigation() {
+        favoriteButton = UIBarButtonItem(barButtonSystemItem: .bookmarks, target: self, action: #selector(addFavoriteArticle))
+        navigationItem.rightBarButtonItem = favoriteButton
     }
     
     fileprivate func setupWebView() {
@@ -65,8 +74,32 @@ class ArticleDetailViewController: UIViewController {
         wkWebView.load(myRequest)
     }
     
+    func setupAlartController() -> UIAlertController{
+        let alertController = UIAlertController(title: "Prompt", message: "", preferredStyle: UIAlertController.Style.alert)
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil )
+        alertController.addAction(cancelAction)
+        return alertController
+    }
+    
     @objc func refreshWebView(_ sender: UIRefreshControl) {
         wkWebView?.reload()
+    }
+    
+    @objc func addFavoriteArticle() {
+        let alertController = setupAlartController()
+        if !MyController.shared.authSession.isSignedIn {
+            alertController.message = Constant.notLoginMessage
+            self.present(alertController, animated: true, completion: nil)
+        }else {
+            if let user = MyController.shared.user {
+                ArticleController.shared.saveFavoriteArticle(with: article, for: user)
+                alertController.message = Constant.saveFavoriteArticle
+                self.present(alertController, animated: true, completion: nil)
+            }else {
+                alertController.message = Constant.reLogin
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
     }
 }
 

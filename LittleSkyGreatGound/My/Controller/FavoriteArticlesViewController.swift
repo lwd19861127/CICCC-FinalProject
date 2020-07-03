@@ -9,7 +9,7 @@
 import UIKit
 import Amplify
 
-class RecentlyReadArticlesViewController: UIViewController, RecentlyReadArticlesDelegate {
+class FavoriteArticlesViewController: UIViewController, FavoriteArticlesDelegate {
 
     private var tableView: UITableView!
     private let searchController = UISearchController(searchResultsController: nil)
@@ -30,7 +30,7 @@ class RecentlyReadArticlesViewController: UIViewController, RecentlyReadArticles
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
-        ArticleController.shared.recentlyReadArticlesDelegate = self
+        ArticleController.shared.favoriteArticlesDelegate = self
 
         /// Navigation Bar
         setupNavigation()
@@ -51,8 +51,8 @@ class RecentlyReadArticlesViewController: UIViewController, RecentlyReadArticles
         MyController.shared.getCurrentUser()
     }
     
-    func updateRecentlyReadArticlesViewControllerUI(with recentlyReadArticles: Articles) {
-        articles = recentlyReadArticles.articleList
+    func updateFavoriteArticlesViewControllerUI(with favoriteArticles: Articles) {
+        articles = favoriteArticles.articleList
         tableView.reloadData()
     }
     
@@ -98,7 +98,7 @@ class RecentlyReadArticlesViewController: UIViewController, RecentlyReadArticles
     private func searchForArticles() {
         DispatchQueue.main.async {
             if let user = MyController.shared.user {
-                ArticleController.shared.readRecentlyReadArticles(by: user.id) {
+                ArticleController.shared.readFavoriteArticles(by: user.id) {
                     self.tableView.refreshControl?.endRefreshing()
                 }
             }
@@ -129,7 +129,7 @@ class RecentlyReadArticlesViewController: UIViewController, RecentlyReadArticles
 
 // MARK: - Table view data source
 
-extension RecentlyReadArticlesViewController: UITableViewDataSource {
+extension FavoriteArticlesViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return isFiltering ? filteredArticles.count : articles.count
   }
@@ -144,7 +144,7 @@ extension RecentlyReadArticlesViewController: UITableViewDataSource {
 
 // MARK: - Table view delegate
 
-extension RecentlyReadArticlesViewController: UITableViewDelegate {
+extension FavoriteArticlesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let article = isFiltering ? filteredArticles[indexPath.row] : articles[indexPath.row]
         let articleDetailVC = ArticleDetailViewController()
@@ -156,7 +156,7 @@ extension RecentlyReadArticlesViewController: UITableViewDelegate {
 
 // MARK: - UISearchResultsUpdating
 
-extension RecentlyReadArticlesViewController: UISearchResultsUpdating {
+extension FavoriteArticlesViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     let searchBar = searchController.searchBar
     let category = ArticleCategory(rawValue: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
@@ -164,7 +164,7 @@ extension RecentlyReadArticlesViewController: UISearchResultsUpdating {
   }
 }
 
-extension RecentlyReadArticlesViewController: UISearchBarDelegate {
+extension FavoriteArticlesViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
     let category = ArticleCategory(rawValue: searchBar.scopeButtonTitles![selectedScope])
     filterArticleFor(searchText: searchBar.text!, category: category)

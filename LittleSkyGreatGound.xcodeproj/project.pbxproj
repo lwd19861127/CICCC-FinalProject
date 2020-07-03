@@ -30,6 +30,7 @@
 		86C79B1924AD712A00DE8B8F /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C79B1824AD712A00DE8B8F /* InfoTableViewController.swift */; };
 		86C79B1D24ADB52200DE8B8F /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C79B1C24ADB52200DE8B8F /* AboutUsViewController.swift */; };
 		86C79B3524AE19C700DE8B8F /* RecentlyReadArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C79B3424AE19C700DE8B8F /* RecentlyReadArticlesViewController.swift */; };
+		86C79B3724AEB5E800DE8B8F /* FavoriteArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C79B3624AEB5E800DE8B8F /* FavoriteArticlesViewController.swift */; };
 		86CF02F324A9814700607D20 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF02F224A9814700607D20 /* ColorTheme.swift */; };
 		86CF02F524A9816D00607D20 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF02F424A9816D00607D20 /* HorizontalStackView.swift */; };
 		86CF02F724A981B300607D20 /* UIView+ConstraintLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF02F624A981B300607D20 /* UIView+ConstraintLayout.swift */; };
@@ -74,6 +75,7 @@
 		86C79B1824AD712A00DE8B8F /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		86C79B1C24ADB52200DE8B8F /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		86C79B3424AE19C700DE8B8F /* RecentlyReadArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyReadArticlesViewController.swift; sourceTree = "<group>"; };
+		86C79B3624AEB5E800DE8B8F /* FavoriteArticlesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteArticlesViewController.swift; sourceTree = "<group>"; };
 		86CF02F224A9814700607D20 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		86CF02F424A9816D00607D20 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
 		86CF02F624A981B300607D20 /* UIView+ConstraintLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ConstraintLayout.swift"; sourceTree = "<group>"; };
@@ -257,6 +259,7 @@
 				86CF030224A9928300607D20 /* MyViewController.swift */,
 				86C79B0E24AD5B3200DE8B8F /* MyTableViewController.swift */,
 				86C79B1824AD712A00DE8B8F /* InfoTableViewController.swift */,
+				86C79B3624AEB5E800DE8B8F /* FavoriteArticlesViewController.swift */,
 				86C79B3424AE19C700DE8B8F /* RecentlyReadArticlesViewController.swift */,
 				86C79B1C24ADB52200DE8B8F /* AboutUsViewController.swift */,
 			);
@@ -450,6 +453,7 @@
 				60FA394D37984EE5818EDC36 /* Status.swift in Sources */,
 				86FC744A24AAB75600B69E41 /* UserData.swift in Sources */,
 				D9F25B5962DA46D59C99FA2B /* ArticleCategory.swift in Sources */,
+				86C79B3724AEB5E800DE8B8F /* FavoriteArticlesViewController.swift in Sources */,
 				86C79B1324AD5CBF00DE8B8F /* TableViewCell.swift in Sources */,
 				040BBEC8982E4E1CBEA6B588 /* FavoriteArticles.swift in Sources */,
 				DF76C6BE3B9047EAA94F985B /* FavoriteArticles+Schema.swift in Sources */,

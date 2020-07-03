@@ -11,6 +11,8 @@ import UIKit
 struct Constant {
     public static let notLoginMessage = "Not login"
     public static let logoutConfirmMessage = "Are you sure to Logout?"
+    public static let reLogin = "Please ReLogin"
+    public static let saveFavoriteArticle = "Add To Favorite"
     
     public static let myInfoLable = "My Info"
     public static let favoriteArticlesLable = "Favorite Articles"
@@ -173,6 +175,16 @@ class MyTableViewController: UITableViewController, MyControllerDelegate {
             }else {
                 let infoVC = InfoTableViewController(style: .grouped)
                 navigationController?.pushViewController(infoVC, animated: true)
+            }
+        case 2:
+            if !MyController.shared.authSession.isSignedIn {
+                let alertController = setupAlartController()
+                alertController.message = Constant.notLoginMessage
+                self.present(alertController, animated: true, completion: nil)
+                tableView.deselectRow(at: indexPath, animated: true)
+            }else {
+                let fRVC = FavoriteArticlesViewController()
+                navigationController?.pushViewController(fRVC, animated: true)
             }
         case 3:
             if !MyController.shared.authSession.isSignedIn {
