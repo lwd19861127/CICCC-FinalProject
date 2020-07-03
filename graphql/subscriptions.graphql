@@ -1,4 +1,124 @@
 # this is an auto generated file. This will be overwritten
+subscription OnCreateUser {
+  onCreateUser {
+    id
+    userName
+    userEmail
+    favorites {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    recentlyRead {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateUser {
+  onUpdateUser {
+    id
+    userName
+    userEmail
+    favorites {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    recentlyRead {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteUser {
+  onDeleteUser {
+    id
+    userName
+    userEmail
+    favorites {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    recentlyRead {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
 subscription OnCreateArticle {
   onCreateArticle {
     id
@@ -10,6 +130,34 @@ subscription OnCreateArticle {
     categories
     priority
     description
+    favoriteReaders {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    recentlyReaders {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -28,6 +176,34 @@ subscription OnUpdateArticle {
     categories
     priority
     description
+    favoriteReaders {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    recentlyReaders {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -46,6 +222,358 @@ subscription OnDeleteArticle {
     categories
     priority
     description
+    favoriteReaders {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    recentlyReaders {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateFavoriteArticles {
+  onCreateFavoriteArticles {
+    id
+    userID
+    articleID
+    user {
+      id
+      userName
+      userEmail
+      favorites {
+        nextToken
+        startedAt
+      }
+      recentlyRead {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    article {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      favoriteReaders {
+        nextToken
+        startedAt
+      }
+      recentlyReaders {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateFavoriteArticles {
+  onUpdateFavoriteArticles {
+    id
+    userID
+    articleID
+    user {
+      id
+      userName
+      userEmail
+      favorites {
+        nextToken
+        startedAt
+      }
+      recentlyRead {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    article {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      favoriteReaders {
+        nextToken
+        startedAt
+      }
+      recentlyReaders {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteFavoriteArticles {
+  onDeleteFavoriteArticles {
+    id
+    userID
+    articleID
+    user {
+      id
+      userName
+      userEmail
+      favorites {
+        nextToken
+        startedAt
+      }
+      recentlyRead {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    article {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      favoriteReaders {
+        nextToken
+        startedAt
+      }
+      recentlyReaders {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateRecentlyReadArticles {
+  onCreateRecentlyReadArticles {
+    id
+    userID
+    articleID
+    user {
+      id
+      userName
+      userEmail
+      favorites {
+        nextToken
+        startedAt
+      }
+      recentlyRead {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    article {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      favoriteReaders {
+        nextToken
+        startedAt
+      }
+      recentlyReaders {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateRecentlyReadArticles {
+  onUpdateRecentlyReadArticles {
+    id
+    userID
+    articleID
+    user {
+      id
+      userName
+      userEmail
+      favorites {
+        nextToken
+        startedAt
+      }
+      recentlyRead {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    article {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      favoriteReaders {
+        nextToken
+        startedAt
+      }
+      recentlyReaders {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteRecentlyReadArticles {
+  onDeleteRecentlyReadArticles {
+    id
+    userID
+    articleID
+    user {
+      id
+      userName
+      userEmail
+      favorites {
+        nextToken
+        startedAt
+      }
+      recentlyRead {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    article {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      favoriteReaders {
+        nextToken
+        startedAt
+      }
+      recentlyReaders {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
     _version
     _deleted
     _lastChangedAt

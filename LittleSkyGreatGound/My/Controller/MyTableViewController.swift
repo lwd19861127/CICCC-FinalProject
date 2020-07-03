@@ -31,6 +31,7 @@ class MyTableViewController: UITableViewController, MyControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = .backgroundColor
         
         tableView.register(LoginViewCell.self, forCellReuseIdentifier: loginCellId)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: tableViewCellId)
@@ -172,6 +173,16 @@ class MyTableViewController: UITableViewController, MyControllerDelegate {
             }else {
                 let infoVC = InfoTableViewController(style: .grouped)
                 navigationController?.pushViewController(infoVC, animated: true)
+            }
+        case 3:
+            if !MyController.shared.authSession.isSignedIn {
+                let alertController = setupAlartController()
+                alertController.message = Constant.notLoginMessage
+                self.present(alertController, animated: true, completion: nil)
+                tableView.deselectRow(at: indexPath, animated: true)
+            }else {
+                let rRVC = RecentlyReadArticlesViewController()
+                navigationController?.pushViewController(rRVC, animated: true)
             }
         case 4:
             let auVC = AboutUsViewController()

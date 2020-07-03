@@ -18,7 +18,7 @@ class MyController {
     static let defaultUserName = "Press to Login"
     weak var delegate: MyControllerDelegate?
     
-    var userData = UserData()
+    var user: User?
     var authSession = AuthSession()
 
     static let shared = MyController()
@@ -56,6 +56,7 @@ class MyController {
     }
     
     func signOut() {
+        user = nil
         let options = AuthSignOutRequest.Options(globalSignOut: true)
         _ = Amplify.Auth.signOut(options: options) { result in
             switch result {
@@ -94,8 +95,7 @@ class MyController {
             print("Could not get user, perhaps the user is not signed in")
             return
         }
-        self.userData.userID = user.userId
-        self.userData.userName = user.username
+        self.user = User(id: user.userId, userName: user.username)
         self.updateSignStatusAndMyViewUI(forIsSignedInStatus: true, withUserName: user.username)
         fetchAttributes()
     }
@@ -113,7 +113,7 @@ class MyController {
                 case .success(let attributes):
                     for attribute in attributes {
                         if attribute.key.rawValue == "email" {
-                            self.userData.userEmail = attribute.value
+                            self.user?.userEmail = attribute.value
                         }
                     }
                     print("User attributes - \(attributes)")

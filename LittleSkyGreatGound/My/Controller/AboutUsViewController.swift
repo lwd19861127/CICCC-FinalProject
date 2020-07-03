@@ -12,13 +12,13 @@ class AboutUsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
+        view.backgroundColor = .backgroundColor
         
         let containerView = UIView()
         let image: UIImageView = {
             let iv = UIImageView()
             let userImageHeightAndWidth = 100
-            iv.image = UIImage(named: "userImage")
+            iv.image = .userImage
             iv.frame  = CGRect(x: 0, y: 0, width: userImageHeightAndWidth, height: userImageHeightAndWidth)
             iv.layer.cornerRadius = iv.frame.size.width / 2
             iv.clipsToBounds = true
@@ -36,6 +36,7 @@ class AboutUsViewController: UIViewController {
         
         let text: UITextView = {
             let tt = UITextView()
+            tt.backgroundColor = .backgroundColor
             tt.font = .preferredFont(forTextStyle: .body)
             tt.textAlignment = .center
             return tt

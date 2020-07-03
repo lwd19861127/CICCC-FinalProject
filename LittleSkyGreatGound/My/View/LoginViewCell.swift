@@ -15,7 +15,7 @@ class LoginViewCell: UITableViewCell {
     var userImage: UIImageView = {
         let iv = UIImageView()
         let userImageHeightAndWidth = 100
-        iv.image = UIImage(named: "userImage")
+        iv.image = .userImage
         iv.frame  = CGRect(x: 0, y: 0, width: userImageHeightAndWidth, height: userImageHeightAndWidth)
         iv.layer.cornerRadius = iv.frame.size.width / 2
         iv.clipsToBounds = true
@@ -28,13 +28,8 @@ class LoginViewCell: UITableViewCell {
     var userIDLable:UILabel = {
         let lb = UILabel()
         lb.text = "Hi, there!"
-        lb.textColor = .black
         lb.font = .preferredFont(forTextStyle: .headline)
         lb.textAlignment = .left
-//        bt.setTitle("Hi, there!", for: .normal)
-//        bt.setTitleColor(.black, for: .normal)
-//        bt.titleLabel?.font = .preferredFont(forTextStyle: .headline)
-//        bt.contentHorizontalAlignment = .left
         return lb
     }()
 

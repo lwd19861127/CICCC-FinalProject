@@ -10,5 +10,8 @@ import UIKit
 
 extension UIColor {
     static let backgroundColor = UIColor(named: "backgroundColor")
-    static let backgroundColorOpposite = UIColor(named: "backgroundColorOpposite")
+}
+
+extension UIImage {
+    static let userImage = UIImage(named: "userImage")
 }

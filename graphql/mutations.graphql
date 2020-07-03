@@ -1,4 +1,133 @@
 # this is an auto generated file. This will be overwritten
+mutation CreateUser(
+  $input: CreateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  createUser(input: $input, condition: $condition) {
+    id
+    userName
+    userEmail
+    favorites {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    recentlyRead {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateUser(
+  $input: UpdateUserInput!
+  $condition: ModelUserConditionInput
+) {
+  updateUser(input: $input, condition: $condition) {
+    id
+    userName
+    userEmail
+    favorites {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    recentlyRead {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteUser(
+  $input: DeleteUserInput!
+  $condition: ModelUserConditionInput
+) {
+  deleteUser(input: $input, condition: $condition) {
+    id
+    userName
+    userEmail
+    favorites {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    recentlyRead {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
 mutation CreateArticle(
   $input: CreateArticleInput!
   $condition: ModelArticleConditionInput
@@ -13,6 +142,34 @@ mutation CreateArticle(
     categories
     priority
     description
+    favoriteReaders {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    recentlyReaders {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -34,6 +191,34 @@ mutation UpdateArticle(
     categories
     priority
     description
+    favoriteReaders {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    recentlyReaders {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
     _version
     _deleted
     _lastChangedAt
@@ -55,6 +240,376 @@ mutation DeleteArticle(
     categories
     priority
     description
+    favoriteReaders {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    recentlyReaders {
+      items {
+        id
+        userID
+        articleID
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateFavoriteArticles(
+  $input: CreateFavoriteArticlesInput!
+  $condition: ModelFavoriteArticlesConditionInput
+) {
+  createFavoriteArticles(input: $input, condition: $condition) {
+    id
+    userID
+    articleID
+    user {
+      id
+      userName
+      userEmail
+      favorites {
+        nextToken
+        startedAt
+      }
+      recentlyRead {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    article {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      favoriteReaders {
+        nextToken
+        startedAt
+      }
+      recentlyReaders {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateFavoriteArticles(
+  $input: UpdateFavoriteArticlesInput!
+  $condition: ModelFavoriteArticlesConditionInput
+) {
+  updateFavoriteArticles(input: $input, condition: $condition) {
+    id
+    userID
+    articleID
+    user {
+      id
+      userName
+      userEmail
+      favorites {
+        nextToken
+        startedAt
+      }
+      recentlyRead {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    article {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      favoriteReaders {
+        nextToken
+        startedAt
+      }
+      recentlyReaders {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteFavoriteArticles(
+  $input: DeleteFavoriteArticlesInput!
+  $condition: ModelFavoriteArticlesConditionInput
+) {
+  deleteFavoriteArticles(input: $input, condition: $condition) {
+    id
+    userID
+    articleID
+    user {
+      id
+      userName
+      userEmail
+      favorites {
+        nextToken
+        startedAt
+      }
+      recentlyRead {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    article {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      favoriteReaders {
+        nextToken
+        startedAt
+      }
+      recentlyReaders {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation CreateRecentlyReadArticles(
+  $input: CreateRecentlyReadArticlesInput!
+  $condition: ModelRecentlyReadArticlesConditionInput
+) {
+  createRecentlyReadArticles(input: $input, condition: $condition) {
+    id
+    userID
+    articleID
+    user {
+      id
+      userName
+      userEmail
+      favorites {
+        nextToken
+        startedAt
+      }
+      recentlyRead {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    article {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      favoriteReaders {
+        nextToken
+        startedAt
+      }
+      recentlyReaders {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateRecentlyReadArticles(
+  $input: UpdateRecentlyReadArticlesInput!
+  $condition: ModelRecentlyReadArticlesConditionInput
+) {
+  updateRecentlyReadArticles(input: $input, condition: $condition) {
+    id
+    userID
+    articleID
+    user {
+      id
+      userName
+      userEmail
+      favorites {
+        nextToken
+        startedAt
+      }
+      recentlyRead {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    article {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      favoriteReaders {
+        nextToken
+        startedAt
+      }
+      recentlyReaders {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteRecentlyReadArticles(
+  $input: DeleteRecentlyReadArticlesInput!
+  $condition: ModelRecentlyReadArticlesConditionInput
+) {
+  deleteRecentlyReadArticles(input: $input, condition: $condition) {
+    id
+    userID
+    articleID
+    user {
+      id
+      userName
+      userEmail
+      favorites {
+        nextToken
+        startedAt
+      }
+      recentlyRead {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    article {
+      id
+      title
+      date
+      link
+      status
+      image
+      categories
+      priority
+      description
+      favoriteReaders {
+        nextToken
+        startedAt
+      }
+      recentlyReaders {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
     _version
     _deleted
     _lastChangedAt

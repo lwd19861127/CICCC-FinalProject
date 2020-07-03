@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040BBEC8982E4E1CBEA6B588 /* FavoriteArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07865ADA27A14D1290B9788E /* FavoriteArticles.swift */; };
+		291CE00C60F24EE5B05FAFCC /* RecentlyReadArticles+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F00304CC2C146CB8E14AF91 /* RecentlyReadArticles+Schema.swift */; };
 		3CBB6AF340AC926BDDB2C3E5 /* Pods_LittleSkyGreatGound.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65BD74E0AEA8BB28B8CCB1CE /* Pods_LittleSkyGreatGound.framework */; };
 		60FA394D37984EE5818EDC36 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = A9879103AE734501A999F4C5 /* Status.swift */; };
 		67E01A23B8FC4A35B72C165A /* AmplifyModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 293F8185489C47F38A46D207 /* AmplifyModels.swift */; };
 		6E67FF31750E45338B1B004F /* awsconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = AA6A66F0B2984BF1A1E4BCE9 /* awsconfiguration.json */; };
+		758C736BC0274C2280BC63F0 /* User+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3B1D63D9FDA45B0B63630E5 /* User+Schema.swift */; };
 		790983094A984BCDA11BA540 /* Article+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580D4051A7EA409AB3457FFE /* Article+Schema.swift */; };
 		86304BED24A2305800943D97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86304BEC24A2305800943D97 /* AppDelegate.swift */; };
 		86304BEF24A2305800943D97 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86304BEE24A2305800943D97 /* SceneDelegate.swift */; };
@@ -26,6 +29,7 @@
 		86C79B1724AD5DD700DE8B8F /* LoginViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C79B1624AD5DD700DE8B8F /* LoginViewCell.swift */; };
 		86C79B1924AD712A00DE8B8F /* InfoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C79B1824AD712A00DE8B8F /* InfoTableViewController.swift */; };
 		86C79B1D24ADB52200DE8B8F /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C79B1C24ADB52200DE8B8F /* AboutUsViewController.swift */; };
+		86C79B3524AE19C700DE8B8F /* RecentlyReadArticlesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86C79B3424AE19C700DE8B8F /* RecentlyReadArticlesViewController.swift */; };
 		86CF02F324A9814700607D20 /* ColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF02F224A9814700607D20 /* ColorTheme.swift */; };
 		86CF02F524A9816D00607D20 /* HorizontalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF02F424A9816D00607D20 /* HorizontalStackView.swift */; };
 		86CF02F724A981B300607D20 /* UIView+ConstraintLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF02F624A981B300607D20 /* UIView+ConstraintLayout.swift */; };
@@ -34,13 +38,21 @@
 		86CF030124A9924B00607D20 /* MyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF030024A9924B00607D20 /* MyController.swift */; };
 		86CF030324A9928300607D20 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86CF030224A9928300607D20 /* MyViewController.swift */; };
 		86FC744A24AAB75600B69E41 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 86FC744924AAB75600B69E41 /* UserData.swift */; };
+		8F2997FF86A142E3BFBBDF36 /* RecentlyReadArticles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2134180F9017412B84FBD424 /* RecentlyReadArticles.swift */; };
+		CA40F2DD41B64AFBB722357A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101789E2EACC4140A152718B /* User.swift */; };
 		D9F25B5962DA46D59C99FA2B /* ArticleCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A57508774074394A1FE7A6B /* ArticleCategory.swift */; };
+		DF76C6BE3B9047EAA94F985B /* FavoriteArticles+Schema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EA52C92D4A6483DBCBEE0E6 /* FavoriteArticles+Schema.swift */; };
 		E2171A02E07342AEAD071685 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = FD3363D7ED774646945EB099 /* Article.swift */; };
 		EBA3FA4879E9460BAF5EB141 /* amplifyconfiguration.json in Resources */ = {isa = PBXBuildFile; fileRef = BE4F46FFDBA043778B22472B /* amplifyconfiguration.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		07865ADA27A14D1290B9788E /* FavoriteArticles.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = FavoriteArticles.swift; path = amplify/generated/models/FavoriteArticles.swift; sourceTree = "<group>"; };
+		101789E2EACC4140A152718B /* User.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = User.swift; path = amplify/generated/models/User.swift; sourceTree = "<group>"; };
+		1EA52C92D4A6483DBCBEE0E6 /* FavoriteArticles+Schema.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "FavoriteArticles+Schema.swift"; path = "amplify/generated/models/FavoriteArticles+Schema.swift"; sourceTree = "<group>"; };
+		2134180F9017412B84FBD424 /* RecentlyReadArticles.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = RecentlyReadArticles.swift; path = amplify/generated/models/RecentlyReadArticles.swift; sourceTree = "<group>"; };
 		293F8185489C47F38A46D207 /* AmplifyModels.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = AmplifyModels.swift; path = amplify/generated/models/AmplifyModels.swift; sourceTree = "<group>"; };
+		4F00304CC2C146CB8E14AF91 /* RecentlyReadArticles+Schema.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "RecentlyReadArticles+Schema.swift"; path = "amplify/generated/models/RecentlyReadArticles+Schema.swift"; sourceTree = "<group>"; };
 		580D4051A7EA409AB3457FFE /* Article+Schema.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "Article+Schema.swift"; path = "amplify/generated/models/Article+Schema.swift"; sourceTree = "<group>"; };
 		59FFD2CF17F378713D57D3A0 /* Pods-LittleSkyGreatGound.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LittleSkyGreatGound.release.xcconfig"; path = "Target Support Files/Pods-LittleSkyGreatGound/Pods-LittleSkyGreatGound.release.xcconfig"; sourceTree = "<group>"; };
 		65BD74E0AEA8BB28B8CCB1CE /* Pods_LittleSkyGreatGound.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LittleSkyGreatGound.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +73,7 @@
 		86C79B1624AD5DD700DE8B8F /* LoginViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewCell.swift; sourceTree = "<group>"; };
 		86C79B1824AD712A00DE8B8F /* InfoTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewController.swift; sourceTree = "<group>"; };
 		86C79B1C24ADB52200DE8B8F /* AboutUsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		86C79B3424AE19C700DE8B8F /* RecentlyReadArticlesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentlyReadArticlesViewController.swift; sourceTree = "<group>"; };
 		86CF02F224A9814700607D20 /* ColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTheme.swift; sourceTree = "<group>"; };
 		86CF02F424A9816D00607D20 /* HorizontalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalStackView.swift; sourceTree = "<group>"; };
 		86CF02F624A981B300607D20 /* UIView+ConstraintLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ConstraintLayout.swift"; sourceTree = "<group>"; };
@@ -75,6 +88,7 @@
 		B6B16E56BBF4487887D54AE9 /* schema.graphql */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text; name = schema.graphql; path = amplify/backend/api/amplifyDatasource/schema.graphql; sourceTree = "<group>"; };
 		B8B5F32080B24426AEF4E4FE /* amplifytools.xcconfig */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = text.xcconfig; path = amplifytools.xcconfig; sourceTree = "<group>"; };
 		BE4F46FFDBA043778B22472B /* amplifyconfiguration.json */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = amplifyconfiguration.json; sourceTree = "<group>"; };
+		D3B1D63D9FDA45B0B63630E5 /* User+Schema.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = "User+Schema.swift"; path = "amplify/generated/models/User+Schema.swift"; sourceTree = "<group>"; };
 		FD3363D7ED774646945EB099 /* Article.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = Article.swift; path = amplify/generated/models/Article.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -243,6 +257,7 @@
 				86CF030224A9928300607D20 /* MyViewController.swift */,
 				86C79B0E24AD5B3200DE8B8F /* MyTableViewController.swift */,
 				86C79B1824AD712A00DE8B8F /* InfoTableViewController.swift */,
+				86C79B3424AE19C700DE8B8F /* RecentlyReadArticlesViewController.swift */,
 				86C79B1C24ADB52200DE8B8F /* AboutUsViewController.swift */,
 			);
 			path = Controller;
@@ -265,6 +280,12 @@
 				580D4051A7EA409AB3457FFE /* Article+Schema.swift */,
 				A9879103AE734501A999F4C5 /* Status.swift */,
 				6A57508774074394A1FE7A6B /* ArticleCategory.swift */,
+				07865ADA27A14D1290B9788E /* FavoriteArticles.swift */,
+				1EA52C92D4A6483DBCBEE0E6 /* FavoriteArticles+Schema.swift */,
+				2134180F9017412B84FBD424 /* RecentlyReadArticles.swift */,
+				4F00304CC2C146CB8E14AF91 /* RecentlyReadArticles+Schema.swift */,
+				101789E2EACC4140A152718B /* User.swift */,
+				D3B1D63D9FDA45B0B63630E5 /* User+Schema.swift */,
 			);
 			name = AmplifyModels;
 			path = .;
@@ -430,6 +451,13 @@
 				86FC744A24AAB75600B69E41 /* UserData.swift in Sources */,
 				D9F25B5962DA46D59C99FA2B /* ArticleCategory.swift in Sources */,
 				86C79B1324AD5CBF00DE8B8F /* TableViewCell.swift in Sources */,
+				040BBEC8982E4E1CBEA6B588 /* FavoriteArticles.swift in Sources */,
+				DF76C6BE3B9047EAA94F985B /* FavoriteArticles+Schema.swift in Sources */,
+				86C79B3524AE19C700DE8B8F /* RecentlyReadArticlesViewController.swift in Sources */,
+				8F2997FF86A142E3BFBBDF36 /* RecentlyReadArticles.swift in Sources */,
+				291CE00C60F24EE5B05FAFCC /* RecentlyReadArticles+Schema.swift in Sources */,
+				CA40F2DD41B64AFBB722357A /* User.swift in Sources */,
+				758C736BC0274C2280BC63F0 /* User+Schema.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

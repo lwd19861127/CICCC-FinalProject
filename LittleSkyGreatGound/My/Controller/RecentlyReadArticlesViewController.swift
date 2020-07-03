@@ -9,7 +9,7 @@
 import UIKit
 import Amplify
 
-class ArticleViewController: UIViewController {
+class RecentlyReadArticlesViewController: UIViewController, RecentlyReadArticlesDelegate {
 
     private var tableView: UITableView!
     private let searchController = UISearchController(searchResultsController: nil)
@@ -17,6 +17,7 @@ class ArticleViewController: UIViewController {
     
     private let cellId = "ArticleCell"
     
+    private var articles: [Article] = []
     private var filteredArticles: [Article] = []
 
     private var isSearchBarEmpty: Bool {
@@ -29,9 +30,8 @@ class ArticleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .backgroundColor
+        ArticleController.shared.recentlyReadArticlesDelegate = self
 
-        ArticleController.shared.subscribeArticles()
-        
         /// Navigation Bar
         setupNavigation()
         
@@ -45,16 +45,20 @@ class ArticleViewController: UIViewController {
         setupRefresh()
         
         searchForArticles()
-        
-        NotificationCenter.default.addObserver(tableView!, selector: #selector(tableView.reloadData), name: ArticleController.articlesUpdatedNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         MyController.shared.getCurrentUser()
     }
     
+    func updateRecentlyReadArticlesViewControllerUI(with recentlyReadArticles: Articles) {
+        articles = recentlyReadArticles.articleList
+        tableView.reloadData()
+    }
+    
     fileprivate func setupNavigation() {
         navigationItem.title = "LittleSkyGreatGround"
+        navigationController?.navigationBar.backgroundColor = .backgroundColor
     }
     
     fileprivate func setupTableView() {
@@ -93,14 +97,16 @@ class ArticleViewController: UIViewController {
     
     private func searchForArticles() {
         DispatchQueue.main.async {
-            ArticleController.shared.readArticles {
-                self.tableView.refreshControl?.endRefreshing()
+            if let user = MyController.shared.user {
+                ArticleController.shared.readRecentlyReadArticles(by: user.id) {
+                    self.tableView.refreshControl?.endRefreshing()
+                }
             }
         }
     }
     
     private func filterArticleFor(searchText: String, category: ArticleCategory? = nil) {
-        filteredArticles = ArticleController.shared.articles.articleList.filter { (article) in
+        filteredArticles = articles.filter { (article) in
             let isCategoryMatching =  category == article.categories
             let isSearchTextMatching = article.title.lowercased().contains(searchText.lowercased())
             if category == nil { // when category is nil, means it is All
@@ -123,14 +129,14 @@ class ArticleViewController: UIViewController {
 
 // MARK: - Table view data source
 
-extension ArticleViewController: UITableViewDataSource {
+extension RecentlyReadArticlesViewController: UITableViewDataSource {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return isFiltering ? filteredArticles.count : ArticleController.shared.articles.articleList.count
+    return isFiltering ? filteredArticles.count : articles.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! ArticleTableViewCell
-    let article = isFiltering ? filteredArticles[indexPath.row] : ArticleController.shared.articles.articleList[indexPath.row]
+    let article = isFiltering ? filteredArticles[indexPath.row] : articles[indexPath.row]
     cell.article = article
     return cell
   }
@@ -138,22 +144,19 @@ extension ArticleViewController: UITableViewDataSource {
 
 // MARK: - Table view delegate
 
-extension ArticleViewController: UITableViewDelegate {
+extension RecentlyReadArticlesViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let article = isFiltering ? filteredArticles[indexPath.row] : ArticleController.shared.articles.articleList[indexPath.row]
+        let article = isFiltering ? filteredArticles[indexPath.row] : articles[indexPath.row]
         let articleDetailVC = ArticleDetailViewController()
         articleDetailVC.article = article
         navigationController?.pushViewController(articleDetailVC, animated: true)
-        if let user = MyController.shared.user {
-            ArticleController.shared.saveRecentlyReadArticle(with: article, for: user)
-        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 
 // MARK: - UISearchResultsUpdating
 
-extension ArticleViewController: UISearchResultsUpdating {
+extension RecentlyReadArticlesViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     let searchBar = searchController.searchBar
     let category = ArticleCategory(rawValue: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
@@ -161,9 +164,10 @@ extension ArticleViewController: UISearchResultsUpdating {
   }
 }
 
-extension ArticleViewController: UISearchBarDelegate {
+extension RecentlyReadArticlesViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
     let category = ArticleCategory(rawValue: searchBar.scopeButtonTitles![selectedScope])
     filterArticleFor(searchText: searchBar.text!, category: category)
   }
 }
+

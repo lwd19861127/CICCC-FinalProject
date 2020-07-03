@@ -50,13 +50,12 @@ class ArticleTableViewCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
       super.init(style: style, reuseIdentifier: reuseIdentifier)
+      contentView.backgroundColor = .backgroundColor
       let vStackView = VerticalStackView(arrangedSubviews: [titleLabel, dateLabel], spacing: 8, alignment: .firstBaseline, distribution: .fill)
       let hStackView = HorizontalStackView(arrangedSubviews: [thumbnailView, vStackView], spacing: 16, alignment: .center, distribution: .fill)
       contentView.addSubview(hStackView)
-      
       hStackView.matchParent(padding: .init(top: 8, left: 8, bottom: 8, right: 8))
     }
-    
 
     required init?(coder: NSCoder) {
       fatalError()

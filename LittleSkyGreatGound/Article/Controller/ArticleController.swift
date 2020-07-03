@@ -10,7 +10,13 @@ import Foundation
 import Amplify
 import Combine
 
+protocol RecentlyReadArticlesDelegate: class {
+    func updateRecentlyReadArticlesViewControllerUI(with recentlyReadArticles: Articles)
+}
+
 class ArticleController {
+    weak var recentlyReadArticlesDelegate: RecentlyReadArticlesDelegate?
+
     var articleSubscription: AnyCancellable?
 
     var articles = Articles()
@@ -19,6 +25,7 @@ class ArticleController {
             NotificationCenter.default.post(name: ArticleController.articlesUpdatedNotification, object: nil)
         }
     }
+    var recentlyReadArticles = Articles()
     
     static let shared = ArticleController()
     static let articlesUpdatedNotification = Notification.Name("ArticleController.articlesUpdated")
@@ -63,6 +70,29 @@ class ArticleController {
                                     })
     }
     
+    func readRecentlyReadArticles(by userId: String, complet: () -> Void){
+        Amplify.DataStore.query(User.self, byId: userId) {
+            switch $0 {
+            case .success(let user):
+                if let userWithRecentlyReadArticles = user {
+                    if let recentlyReadArticles = userWithRecentlyReadArticles.recentlyRead {
+                        guard recentlyReadArticles.count > 0 else {
+                            print("==== Article ====")
+                            print("No RecentlyReadArticles")
+                            return
+                        }
+                        self.recentlyReadArticles.articleList = recentlyReadArticles.compactMap { $0.article }
+                        self.recentlyReadArticlesDelegate?.updateRecentlyReadArticlesViewControllerUI(with: self.recentlyReadArticles)
+                    }
+                } else {
+                    print("User not found")
+                }
+            case .failure(let error):
+                print("User not found - \(error.localizedDescription)")
+            }
+        }
+    }
+    
     ///test
     func testFindOrSaveArticle() {
         //        ///save
@@ -85,6 +115,32 @@ class ArticleController {
     func testDeleteArticles() {
         for article in ArticleController.shared.articles.articleList {
             ArticleController.shared.deleteArticle(matching: article.id)
+        }
+    }
+    
+    func saveRecentlyReadArticle(with article: Article, for user: User) {
+        Amplify.DataStore.save(user) { userResult in
+            switch userResult {
+            case .failure(let error):
+                print("Error adding post - \(error.localizedDescription)")
+            case .success:
+                Amplify.DataStore.save(article) { articleResult in
+                    switch articleResult {
+                    case .failure(let error):
+                        print("Error adding user - \(error.localizedDescription)")
+                    case .success:
+                        let recentlyReadArticles = RecentlyReadArticles(user: user, article: article)
+                        Amplify.DataStore.save(recentlyReadArticles) { recentlyReadArticlesResult in
+                            switch recentlyReadArticlesResult {
+                            case .failure(let error):
+                                print("Error saving postEditor - \(error.localizedDescription)")
+                            case .success:
+                                print("Saved user, post and postEditor!")
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
     

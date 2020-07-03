@@ -14,7 +14,7 @@ class InfoTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.register(TableViewCell.self, forCellReuseIdentifier: tableViewCellId)
 
     }
@@ -26,18 +26,21 @@ class InfoTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return 3
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: tableViewCellId, for: indexPath) as! TableViewCell
         switch indexPath.row {
         case 0:
+            cell.textLabel?.text = "User ID"
+            cell.detailTextLabel?.text = MyController.shared.user?.id
+        case 1:
             cell.textLabel?.text = "User Name"
-            cell.detailTextLabel?.text = MyController.shared.userData.userName
-        case 1 :
+            cell.detailTextLabel?.text = MyController.shared.user?.userName
+        case 2:
             cell.textLabel?.text = "Email"
-            cell.detailTextLabel?.text = MyController.shared.userData.userEmail
+            cell.detailTextLabel?.text = MyController.shared.user?.userEmail
         default:
             cell.textLabel?.text = ""
         }

@@ -12,6 +12,8 @@ public struct Article: Model {
   public var categories: ArticleCategory?
   public var priority: Int?
   public var description: String?
+  public var favoriteReaders: List<FavoriteArticles>?
+  public var recentlyReaders: List<RecentlyReadArticles>?
   
   public init(id: String = UUID().uuidString,
       title: String,
@@ -21,7 +23,9 @@ public struct Article: Model {
       image: String? = nil,
       categories: ArticleCategory? = nil,
       priority: Int? = nil,
-      description: String? = nil) {
+      description: String? = nil,
+      favoriteReaders: List<FavoriteArticles>? = [],
+      recentlyReaders: List<RecentlyReadArticles>? = []) {
       self.id = id
       self.title = title
       self.date = date
@@ -31,5 +35,7 @@ public struct Article: Model {
       self.categories = categories
       self.priority = priority
       self.description = description
+      self.favoriteReaders = favoriteReaders
+      self.recentlyReaders = recentlyReaders
   }
 }
