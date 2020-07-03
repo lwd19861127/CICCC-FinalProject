@@ -130,7 +130,7 @@ class ArticleController {
                     case .failure(let error):
                         print("Error adding user - \(error.localizedDescription)")
                     case .success:
-                        let recentlyReadArticles = RecentlyReadArticles(user: user, article: article)
+                        let recentlyReadArticles = RecentlyReadArticles(id: user.id + article.id, user: user, article: article)
                         Amplify.DataStore.save(recentlyReadArticles) { recentlyReadArticlesResult in
                             switch recentlyReadArticlesResult {
                             case .failure(let error):
@@ -156,7 +156,7 @@ class ArticleController {
                     case .failure(let error):
                         print("Error adding user - \(error.localizedDescription)")
                     case .success:
-                        let favoriteArticles = FavoriteArticles(user: user, article: article)
+                        let favoriteArticles = FavoriteArticles(id: user.id + article.id, user: user, article: article)
                         Amplify.DataStore.save(favoriteArticles) { favoriteArticlesResult in
                             switch favoriteArticlesResult {
                             case .failure(let error):

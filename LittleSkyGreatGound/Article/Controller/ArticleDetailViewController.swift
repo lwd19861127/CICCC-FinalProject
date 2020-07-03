@@ -76,7 +76,7 @@ class ArticleDetailViewController: UIViewController {
     
     func setupAlartController() -> UIAlertController{
         let alertController = UIAlertController(title: "Prompt", message: "", preferredStyle: UIAlertController.Style.alert)
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil )
+        let cancelAction = UIAlertAction(title: "Confirm", style: UIAlertAction.Style.cancel, handler: nil )
         alertController.addAction(cancelAction)
         return alertController
     }
