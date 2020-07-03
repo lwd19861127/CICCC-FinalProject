@@ -86,6 +86,10 @@ class ArticleViewController: UIViewController {
     }
     
     @objc func refresh(_ sender: UIRefreshControl) {
+        ///Test
+        //ArticleController.shared.testSaveArticle()
+        //ArticleController.shared.testDeleteArticles()
+        
         searchForArticles()
         MyController.shared.fetchCurrentAuthSession()
         refreshController.endRefreshing()

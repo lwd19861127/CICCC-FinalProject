@@ -34,6 +34,7 @@ type Article @model {
 # and can query through User.favorites and Article.favoriteReaders
 type FavoriteArticles
   @model(queries: null)
+  @key(fields: ["userID", "articleID"])
   @key(name: "byUserFavorites", fields: ["userID", "articleID"])
   @key(name: "byArticleFavoriteReaders", fields: ["articleID", "userID"]) {
   id: ID!
@@ -47,6 +48,7 @@ type FavoriteArticles
 # and can query through User.recentlyRead and Article.recentlyReaders
 type RecentlyReadArticles
   @model(queries: null)
+  @key(fields: ["userID", "articleID"])
   @key(name: "byUserRecentlyRead", fields: ["userID", "articleID"])
   @key(name: "byArticleRecentlyReaders", fields: ["articleID", "userID"]) {
   id: ID!
