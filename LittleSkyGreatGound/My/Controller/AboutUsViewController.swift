@@ -41,7 +41,7 @@ class AboutUsViewController: UIViewController {
             tt.textAlignment = .center
             return tt
         }()
-        text.text = "LittleSkyGreatGround is the official app of the LittleSkyGreatGround channel, which is designed to provide parents and moms with good book sharing and parenting experience sharing.\n\nFor all suggestions, usage feedback, and help, please go to WeChat to search Xiaotiandadi WeChat public account, and contact customer service to help you answer your questions.\n\nLittleSkyGreatGround\n "
+        text.text = "LittleSkyGreatGround is the official app of the LittleSkyGreatGround channel, which is designed to provide parents and moms with good book sharing and parenting experience sharing.\n\nFor all suggestions, usage feedback, and help, please go to WeChat to search LittleSkyGreatGround WeChat public account, and contact customer service to help you answer your questions.\n\nLittleSkyGreatGround\n "
         view.addSubview(text)
         text.anchors(topAnchor: containerView.bottomAnchor, leadingAnchor: view.leadingAnchor, trailingAnchor: view.trailingAnchor, bottomAnchor: view.bottomAnchor, padding: UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0), size: .zero)
     }
