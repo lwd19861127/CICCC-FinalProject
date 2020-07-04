@@ -617,3 +617,54 @@ mutation DeleteRecentlyReadArticles(
     updatedAt
   }
 }
+mutation CreateRecommend(
+  $input: CreateRecommendInput!
+  $condition: ModelRecommendConditionInput
+) {
+  createRecommend(input: $input, condition: $condition) {
+    id
+    title
+    image
+    category
+    priority
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation UpdateRecommend(
+  $input: UpdateRecommendInput!
+  $condition: ModelRecommendConditionInput
+) {
+  updateRecommend(input: $input, condition: $condition) {
+    id
+    title
+    image
+    category
+    priority
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+mutation DeleteRecommend(
+  $input: DeleteRecommendInput!
+  $condition: ModelRecommendConditionInput
+) {
+  deleteRecommend(input: $input, condition: $condition) {
+    id
+    title
+    image
+    category
+    priority
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

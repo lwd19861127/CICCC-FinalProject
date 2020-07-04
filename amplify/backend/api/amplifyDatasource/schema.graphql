@@ -4,8 +4,24 @@ enum Status {
 }
 
 enum ArticleCategory {
+    #好书推荐
     BookRecommendations
+    #爸妈经验
     ParentalExperiences
+    #成长记录
+    GrowthRecord
+    #育儿守则
+    ParentingCode
+    #生活点滴
+    BitOfLife
+    #家有学子
+    ThereAreStudents
+    #入学指南
+    AdmissionGuide
+    #良好教养
+    WellEducated
+    #健康安全
+    HealthAndSafety
 }
 
 type User @model {
@@ -24,7 +40,7 @@ type Article @model {
   status: Status!
   image: String
   categories: ArticleCategory
-  priority: Int
+  priority: Int!
   description: String
   favoriteReaders: [FavoriteArticles] @connection(keyName: "byArticleFavoriteReaders", fields: ["id"])
   recentlyReaders: [RecentlyReadArticles] @connection(keyName: "byArticleRecentlyReaders", fields: ["id"])
@@ -56,4 +72,14 @@ type RecentlyReadArticles
   articleID: ID!
   user: User! @connection(fields: ["userID"])
   article: Article! @connection(fields: ["articleID"])
+}
+
+type Recommend
+@model
+ @key(fields: ["category"]) {
+  id: ID!
+  title: String!
+  image: String
+  category: ArticleCategory!
+  priority: Int
 }

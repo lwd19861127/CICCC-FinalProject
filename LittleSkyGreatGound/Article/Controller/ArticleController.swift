@@ -16,6 +16,9 @@ protocol RecentlyReadArticlesDelegate: class {
 protocol FavoriteArticlesDelegate: class {
     func updateFavoriteArticlesViewControllerUI(with favoriteArticles: Articles)
 }
+protocol TopArticlesDelegate: class {
+    func updateTopArticlesViewControllerUI(with topArticles: Articles)
+}
 
 class ArticleController {
     weak var recentlyReadArticlesDelegate: RecentlyReadArticlesDelegate?
@@ -31,6 +34,7 @@ class ArticleController {
     }
     var recentlyReadArticles = Articles()
     var favoriteArticles = Articles()
+    var topArticles = Articles()
     
     static let shared = ArticleController()
     static let articlesUpdatedNotification = Notification.Name("ArticleController.articlesUpdated")
@@ -117,6 +121,28 @@ class ArticleController {
                 print("User not found - \(error.localizedDescription)")
             }
         }
+    }
+    
+    func readTopArticles(complet: () -> Void){
+        Amplify.DataStore.query(Article.self,
+            where: Article.keys.priority > 1,
+            completion: {result in
+            switch(result) {
+                case .success(let dbArticles):
+                    guard dbArticles.count > 0 else {
+                        print("==== Article ====\nNo Article")
+                        return
+                    }
+                    self.topArticles.articleList = dbArticles
+                    complet()
+                    for article in dbArticles {
+                        print("==== Article ====")
+                        print("Name: \(article.title)")
+                    }
+                case .failure(let error):
+                    print("Could not query DataStore: \(error)")
+            }
+        })
     }
     
     func saveRecentlyReadArticle(with article: Article, for user: User) {

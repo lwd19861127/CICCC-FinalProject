@@ -44,13 +44,12 @@ class ArticleViewController: UIViewController {
         ///Refresh Controller
         setupRefresh()
         
-        searchForArticles()
-        
         NotificationCenter.default.addObserver(tableView!, selector: #selector(tableView.reloadData), name: ArticleController.articlesUpdatedNotification, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         MyController.shared.getCurrentUser()
+        searchForArticles()
     }
     
     fileprivate func setupNavigation() {
@@ -144,12 +143,17 @@ extension ArticleViewController: UITableViewDataSource {
 
 extension ArticleViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let article = isFiltering ? filteredArticles[indexPath.row] : ArticleController.shared.articles.articleList[indexPath.row]
+        var article = isFiltering ? filteredArticles[indexPath.row] : ArticleController.shared.articles.articleList[indexPath.row]
         let articleDetailVC = ArticleDetailViewController()
         articleDetailVC.article = article
         navigationController?.pushViewController(articleDetailVC, animated: true)
+        
+        ///Update priority and RecentlyReadArticle
+        article.priority = article.priority + 1
         if let user = MyController.shared.user {
             ArticleController.shared.saveRecentlyReadArticle(with: article, for: user)
+        }else {
+            ArticleController.shared.saveArticle(matching: article)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

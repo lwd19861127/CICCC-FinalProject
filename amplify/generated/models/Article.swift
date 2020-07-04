@@ -10,7 +10,7 @@ public struct Article: Model {
   public var status: Status
   public var image: String?
   public var categories: ArticleCategory?
-  public var priority: Int?
+  public var priority: Int
   public var description: String?
   public var favoriteReaders: List<FavoriteArticles>?
   public var recentlyReaders: List<RecentlyReadArticles>?
@@ -22,7 +22,7 @@ public struct Article: Model {
       status: Status,
       image: String? = nil,
       categories: ArticleCategory? = nil,
-      priority: Int? = nil,
+      priority: Int,
       description: String? = nil,
       favoriteReaders: List<FavoriteArticles>? = [],
       recentlyReaders: List<RecentlyReadArticles>? = []) {

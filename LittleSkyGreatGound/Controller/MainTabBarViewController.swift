@@ -13,15 +13,17 @@ class MainTabBarViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        /**Discovery**/
+        let discoveryViewController = UINavigationController(rootViewController: DiscoveryViewController())
+        discoveryViewController.tabBarItem = UITabBarItem(title: "Discovery", image: UIImage(systemName: "globe"), tag: 0)
+        
         /**Aritcle**/
         let articleViewController = UINavigationController(rootViewController: ArticleViewController())
-        articleViewController.tabBarItem = UITabBarItem(title: "Aritcle", image: UIImage(systemName: "globe"), tag: 0)
+        articleViewController.tabBarItem = UITabBarItem(title: "Aritcle", image: UIImage(systemName: "globe"), tag: 1)
         
         /**My**/
-//        let myViewController = UINavigationController(rootViewController: MyViewController())
-//        myViewController.tabBarItem = UITabBarItem(title: "My", image: UIImage(systemName: "globe"), tag: 1)
         let myTableViewController = UINavigationController(rootViewController: MyTableViewController(style: .grouped))
-        myTableViewController.tabBarItem = UITabBarItem(title: "My", image: UIImage(systemName: "globe"), tag: 1)
+        myTableViewController.tabBarItem = UITabBarItem(title: "My", image: UIImage(systemName: "globe"), tag: 2)
         
         let tabBarList = [articleViewController, myTableViewController]
         

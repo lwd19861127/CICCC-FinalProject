@@ -581,3 +581,45 @@ subscription OnDeleteRecentlyReadArticles {
     updatedAt
   }
 }
+subscription OnCreateRecommend {
+  onCreateRecommend {
+    id
+    title
+    image
+    category
+    priority
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateRecommend {
+  onUpdateRecommend {
+    id
+    title
+    image
+    category
+    priority
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteRecommend {
+  onDeleteRecommend {
+    id
+    title
+    image
+    category
+    priority
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}

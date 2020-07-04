@@ -34,7 +34,7 @@ extension Article {
       .field(article.status, is: .required, ofType: .enum(type: Status.self)),
       .field(article.image, is: .optional, ofType: .string),
       .field(article.categories, is: .optional, ofType: .enum(type: ArticleCategory.self)),
-      .field(article.priority, is: .optional, ofType: .int),
+      .field(article.priority, is: .required, ofType: .int),
       .field(article.description, is: .optional, ofType: .string),
       .hasMany(article.favoriteReaders, is: .optional, ofType: FavoriteArticles.self, associatedWith: FavoriteArticles.keys.article),
       .hasMany(article.recentlyReaders, is: .optional, ofType: RecentlyReadArticles.self, associatedWith: RecentlyReadArticles.keys.article)

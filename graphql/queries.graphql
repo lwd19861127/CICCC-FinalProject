@@ -325,3 +325,75 @@ query SyncRecentlyReadArticles(
     startedAt
   }
 }
+query SyncRecommends(
+  $filter: ModelRecommendFilterInput
+  $limit: Int
+  $nextToken: String
+  $lastSync: AWSTimestamp
+) {
+  syncRecommends(
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    lastSync: $lastSync
+  ) {
+    items {
+      id
+      title
+      image
+      category
+      priority
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
+query GetRecommend($category: ArticleCategory!) {
+  getRecommend(category: $category) {
+    id
+    title
+    image
+    category
+    priority
+    _version
+    _deleted
+    _lastChangedAt
+    createdAt
+    updatedAt
+  }
+}
+query ListRecommends(
+  $category: ArticleCategory
+  $filter: ModelRecommendFilterInput
+  $limit: Int
+  $nextToken: String
+  $sortDirection: ModelSortDirection
+) {
+  listRecommends(
+    category: $category
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    sortDirection: $sortDirection
+  ) {
+    items {
+      id
+      title
+      image
+      category
+      priority
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+    nextToken
+    startedAt
+  }
+}
