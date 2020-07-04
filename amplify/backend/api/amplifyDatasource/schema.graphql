@@ -3,7 +3,7 @@ enum Status {
   OFF
 }
 
-enum ArticleCategory {
+enum Category {
     #好书推荐
     BookRecommendations
     #爸妈经验
@@ -32,15 +32,17 @@ type User @model {
     recentlyRead: [RecentlyReadArticles] @connection(keyName: "byUserRecentlyRead", fields: ["id"])
 }
 
-type Article @model {
+type Article @model
+@key(name: "ArticleByStatusCreatedAt", fields: ["status", "createdAt"], queryField: "articleByStatusCreatedAt")
+@key(name: "ArticleByStatusPriority",fields: ["status","priority"], queryField: "articleByStatusPriority"){
   id: ID!
   title: String!
-  date: AWSDateTime!
   link: String!
   status: Status!
-  image: String
-  categories: ArticleCategory
   priority: Int!
+  createdAt: AWSDateTime!
+  image: String
+  categories: Category
   description: String
   favoriteReaders: [FavoriteArticles] @connection(keyName: "byArticleFavoriteReaders", fields: ["id"])
   recentlyReaders: [RecentlyReadArticles] @connection(keyName: "byArticleRecentlyReaders", fields: ["id"])
@@ -76,10 +78,12 @@ type RecentlyReadArticles
 
 type Recommend
 @model
- @key(fields: ["category"]) {
+ @key(fields: ["category"])
+ @key(name: "RecommendByStatusPriority",fields: ["status","priority"], queryField: "recommendByStatusPriority"){
   id: ID!
   title: String!
+  status: Status!
+  category: Category!
+  priority: Int!
   image: String
-  category: ArticleCategory!
-  priority: Int
 }

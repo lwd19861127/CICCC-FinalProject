@@ -7,9 +7,10 @@ extension Recommend {
    public enum CodingKeys: String, ModelKey {
     case id
     case title
-    case image
+    case status
     case category
     case priority
+    case image
   }
   
   public static let keys = CodingKeys.self
@@ -23,9 +24,10 @@ extension Recommend {
     model.fields(
       .id(),
       .field(recommend.title, is: .required, ofType: .string),
-      .field(recommend.image, is: .optional, ofType: .string),
-      .field(recommend.category, is: .required, ofType: .enum(type: ArticleCategory.self)),
-      .field(recommend.priority, is: .optional, ofType: .int)
+      .field(recommend.status, is: .required, ofType: .enum(type: Status.self)),
+      .field(recommend.category, is: .required, ofType: .enum(type: Category.self)),
+      .field(recommend.priority, is: .required, ofType: .int),
+      .field(recommend.image, is: .optional, ofType: .string)
     )
     }
 }

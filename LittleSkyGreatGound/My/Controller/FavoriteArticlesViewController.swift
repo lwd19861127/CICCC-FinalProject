@@ -80,7 +80,7 @@ class FavoriteArticlesViewController: UIViewController, FavoriteArticlesDelegate
       // ensure that the search bar doesn't remain on the screen if the user navigates to another view controller while the UISearchController is active
       definesPresentationContext = true
         
-        searchController.searchBar.scopeButtonTitles = ["All", ArticleCategory.bookRecommendations.rawValue, ArticleCategory.parentalExperiences.rawValue]
+        searchController.searchBar.scopeButtonTitles = ["All", Category.bookRecommendations.rawValue, Category.parentalExperiences.rawValue]
     }
     
     fileprivate func setupRefresh() {
@@ -105,7 +105,7 @@ class FavoriteArticlesViewController: UIViewController, FavoriteArticlesDelegate
         }
     }
     
-    private func filterArticleFor(searchText: String, category: ArticleCategory? = nil) {
+    private func filterArticleFor(searchText: String, category: Category? = nil) {
         filteredArticles = articles.filter { (article) in
             let isCategoryMatching =  category == article.categories
             let isSearchTextMatching = article.title.lowercased().contains(searchText.lowercased())
@@ -159,14 +159,14 @@ extension FavoriteArticlesViewController: UITableViewDelegate {
 extension FavoriteArticlesViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     let searchBar = searchController.searchBar
-    let category = ArticleCategory(rawValue: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
+    let category = Category(rawValue: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
     filterArticleFor(searchText: searchBar.text!, category: category)
   }
 }
 
 extension FavoriteArticlesViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-    let category = ArticleCategory(rawValue: searchBar.scopeButtonTitles![selectedScope])
+    let category = Category(rawValue: searchBar.scopeButtonTitles![selectedScope])
     filterArticleFor(searchText: searchBar.text!, category: category)
   }
 }

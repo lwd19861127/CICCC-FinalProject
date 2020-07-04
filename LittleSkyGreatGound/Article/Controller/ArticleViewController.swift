@@ -75,7 +75,7 @@ class ArticleViewController: UIViewController {
       // ensure that the search bar doesn't remain on the screen if the user navigates to another view controller while the UISearchController is active
       definesPresentationContext = true
         
-        searchController.searchBar.scopeButtonTitles = ["All", ArticleCategory.bookRecommendations.rawValue, ArticleCategory.parentalExperiences.rawValue]
+        searchController.searchBar.scopeButtonTitles = ["All", Category.bookRecommendations.rawValue, Category.parentalExperiences.rawValue]
     }
     
     fileprivate func setupRefresh() {
@@ -88,6 +88,9 @@ class ArticleViewController: UIViewController {
         ///Test
         //ArticleController.shared.testSaveArticle()
         //ArticleController.shared.testDeleteArticles()
+        
+//        let a1 = Article(id: "2C8A8745-CBC2-457C-B7EF-2695817CA1F8", title: "Did you start studying at the age of 0? What do you read before picture book?", link: "https://mp.weixin.qq.com/s/lA8KPKwnBKNl21mklhm3vw", status: Status.on, priority: 0, createdAt: Temporal.DateTime(Date()), image: "https://cdn.cnn.com/cnnnext/dam/assets/200622094323-hong-kong-china-national-security-law-0620-super-tease.jpg", categories: Category.bookRecommendations, description: "First")
+//        ArticleController.shared.saveArticle(matching: a1)
         
         searchForArticles()
         MyController.shared.fetchCurrentAuthSession()
@@ -102,7 +105,7 @@ class ArticleViewController: UIViewController {
         }
     }
     
-    private func filterArticleFor(searchText: String, category: ArticleCategory? = nil) {
+    private func filterArticleFor(searchText: String, category: Category? = nil) {
         filteredArticles = ArticleController.shared.articles.articleList.filter { (article) in
             let isCategoryMatching =  category == article.categories
             let isSearchTextMatching = article.title.lowercased().contains(searchText.lowercased())
@@ -164,14 +167,14 @@ extension ArticleViewController: UITableViewDelegate {
 extension ArticleViewController: UISearchResultsUpdating {
   func updateSearchResults(for searchController: UISearchController) {
     let searchBar = searchController.searchBar
-    let category = ArticleCategory(rawValue: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
+    let category = Category(rawValue: searchBar.scopeButtonTitles![searchBar.selectedScopeButtonIndex])
     filterArticleFor(searchText: searchBar.text!, category: category)
   }
 }
 
 extension ArticleViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
-    let category = ArticleCategory(rawValue: searchBar.scopeButtonTitles![selectedScope])
+    let category = Category(rawValue: searchBar.scopeButtonTitles![selectedScope])
     filterArticleFor(searchText: searchBar.text!, category: category)
   }
 }

@@ -5,19 +5,22 @@ import Foundation
 public struct Recommend: Model {
   public let id: String
   public var title: String
+  public var status: Status
+  public var category: Category
+  public var priority: Int
   public var image: String?
-  public var category: ArticleCategory
-  public var priority: Int?
   
   public init(id: String = UUID().uuidString,
       title: String,
-      image: String? = nil,
-      category: ArticleCategory,
-      priority: Int? = nil) {
+      status: Status,
+      category: Category,
+      priority: Int,
+      image: String? = nil) {
       self.id = id
       self.title = title
-      self.image = image
+      self.status = status
       self.category = category
       self.priority = priority
+      self.image = image
   }
 }

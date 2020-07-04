@@ -39,7 +39,7 @@ class ArticleTableViewCell: UITableViewCell {
 
     private func updateUI() {
         titleLabel.text = article?.title
-        let date = article?.date.foundationDate.datatypeValue.split(separator: "T").compactMap { "\($0)" }
+        let date = article?.createdAt.foundationDate.datatypeValue.split(separator: "T").compactMap { "\($0)" }
         dateLabel.text = date?[0]
         if let urlStr = article!.image, let thumbnailURL = URL(string: urlStr) {
         thumbnailView.sd_setImage(with: thumbnailURL)
